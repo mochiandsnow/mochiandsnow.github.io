@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>糯团 &amp; 雪团 · 两只住在你桌面上的小兔子</title>
+<meta name="description" content="糯团与雪团是两只原创插画桌面宠物，21 种动作、自然眨眼、可以拎起来、会互相亲昵。全程离线，一次性买断。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mochi &amp; Snow">
+<meta property="og:title" content="Mochi &amp; Snow — 两只住在你桌面上的小兔子">
+<meta property="og:description" content="可以先在浏览器里免费玩。Windows 版会在你真实桌面上散步：21 个动作，免安装、不联网。">
+<meta property="og:image" content="https://mochiandsnow.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://mochiandsnow.com/zh.html">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mochi &amp; Snow — 桌面小兔">
+<meta name="twitter:description" content="两只原创垂耳兔，住在你电脑桌面最底下。先在线免费试一下。">
+<meta name="twitter:image" content="https://mochiandsnow.com/assets/og.jpg">
+<link rel="canonical" href="https://mochiandsnow.com/zh.html">
+<link rel="alternate" hreflang="en" href="https://mochiandsnow.com/index.html">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+  :root{
+    --bg:#FFFBF6; --card:#FFFFFF; --ink:#3B2F27; --muted:#7A6A5D;
+    --line:#EFE3D6; --caramel:#C89A6B; --caramel-d:#A87B4E;
+    --pink:#E8A0B4; --pink-d:#D4809A; --ok:#3E8E6B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.8 -apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",
+      "PingFang SC",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--caramel-d)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{padding:18px 0;border-bottom:1px solid var(--line);position:sticky;top:0;
+    background:rgba(255,251,246,.93);backdrop-filter:blur(10px);z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;letter-spacing:-.2px}
+  .logo span{color:var(--pink-d)}
+  .nav a.lk{margin-left:22px;color:var(--muted);text-decoration:none;font-size:15px}
+  .nav a.lk:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--caramel-d);color:#fff;text-decoration:none;
+    padding:13px 28px;border-radius:999px;font-weight:700;border:0;cursor:pointer;
+    box-shadow:0 8px 20px rgba(168,123,78,.22);transition:.15s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(168,123,78,.3)}
+  .btn.sm{padding:9px 18px;font-size:14px}
+
+  .hero{padding:56px 0 22px;text-align:center}
+  .kicker{display:inline-block;background:#FDF0E4;color:var(--caramel-d);font-weight:700;
+    font-size:13px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  h1{font-size:clamp(29px,4.4vw,48px);line-height:1.22;letter-spacing:-1px;margin:0 0 14px}
+  .sub{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:660px;margin:0 auto 30px}
+  .heroimg{width:100%;border-radius:22px;display:block;box-shadow:0 18px 46px rgba(120,90,60,.16)}
+  .price-row{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px 0 10px;flex-wrap:wrap}
+  .price{font-size:34px;font-weight:800;letter-spacing:-.5px}
+  .was{color:var(--muted);text-decoration:line-through;font-size:19px}
+  .badge{background:#EAF6F0;color:var(--ok);font-weight:700;font-size:13px;padding:5px 12px;border-radius:999px}
+  .fine{font-size:13.5px;color:var(--muted);margin-top:12px}
+
+  section{padding:64px 0}
+  h2{font-size:clamp(22px,3vw,31px);letter-spacing:-.5px;margin:0 0 10px}
+  .lead{color:var(--muted);margin:0 0 34px;max-width:740px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .card h3{margin:0 0 8px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .ico{font-size:24px;margin-bottom:10px;display:block}
+  .shot{width:100%;border-radius:18px;border:1px solid var(--line);display:block;margin-top:12px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .two img{width:100%;border-radius:20px;border:1px solid var(--line)}
+  @media(max-width:800px){.two{grid-template-columns:1fr;gap:22px}.nav a.lk{display:none}}
+
+  .plan{background:var(--card);border:2px solid var(--caramel);border-radius:22px;padding:34px;
+    max-width:560px;margin:0 auto;text-align:center;box-shadow:0 16px 40px rgba(168,123,78,.12)}
+  .plan ul{list-style:none;padding:0;margin:22px 0;text-align:left}
+  .plan li{padding:8px 0 8px 30px;position:relative;color:var(--muted)}
+  .plan li:before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:800}
+  .plan li b{color:var(--ink)}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin-bottom:10px}
+  details summary{cursor:pointer;font-weight:700;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary:before{content:"+ ";color:var(--caramel-d);font-weight:800}
+  details[open] summary:before{content:"− "}
+  details p{color:var(--muted);margin:12px 0 0;font-size:15px}
+  .note{background:#FFF7EC;border:1px solid #F2DFC6;border-radius:14px;padding:18px 22px;
+    font-size:15px;color:#7A5B36;margin-top:26px}
+  footer{border-top:1px solid var(--line);padding:38px 0 54px;color:var(--muted);font-size:14.5px}
+  .fgrid{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap}
+  footer a{color:var(--muted);text-decoration:none;margin-right:20px}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="zh.html">糯团 <span>&amp;</span> 雪团</a>
+    <div>
+      <a class="lk" href="play.html">免费试用</a>
+      <a class="lk" href="#features">它俩能干什么</a>
+      <a class="lk" href="#pricing">价格</a>
+      <a class="lk" href="#faq">常见问题</a>
+      <a class="lk" href="alternatives/index.html">横向对比</a>
+      <a class="lk" href="index.html">English</a>
+      <a class="btn sm" href="#pricing">带走它俩</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <span class="kicker">支持 Windows 10 / 11 · 全程离线 · 免安装</span>
+  <h1>两只小兔子，<br>住在你的桌面上。</h1>
+  <p class="sub">糯团和雪团会站在你的任务栏上溜达、打盹、被你拎着耳朵吊起来，
+    凑近了还会互相蹭一蹭、抱一抱。不用登录，不联网，不装东西。</p>
+  <img class="heroimg" src="assets/hero.jpg" alt="奶茶棕的糯团和戴粉色蝴蝶结的雪团">
+  <div class="price-row">
+    <span class="price">$5.99</span>
+    <span class="badge">永久授权</span>
+  </div>
+  <a class="btn" href="#pricing">把它俩带走</a>
+  <p class="fine" style="margin-top:16px">还不确定？<a href="play.html"><b>先在线免费试一下</b></a> — 不用安装，不用注册。</p>
+  <p class="fine">约合 ¥43 · 一次性买断 · 永久可用 · 免费更新 · 7 天无理由退款</p>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2>这不是一张会动的图</h2>
+    <p class="lead">它俩是用骨架搭出来的，所以会像活物一样压扁、拉伸、侧倾、回弹——
+      而不是把一张画好的 GIF 循环播放。</p>
+    <div class="grid">
+      <div class="card"><span class="ico">🐰</span><h3>两只原创角色</h3>
+        <p>奶茶棕的糯团，雪白配粉蝴蝶结的雪团。身形、毛感、脸型都不一样，不是换个颜色。</p></div>
+      <div class="card"><span class="ico">🎬</span><h3>21 种动作</h3>
+        <p>待机、走、跑、跳、蹦、转圈、探头、转身、张望、摇头、划水，外加 25 种漫画特效。</p></div>
+      <div class="card"><span class="ico">👀</span><h3>会眨眼</h3>
+        <p>三档眼态，快合慢睁，偶尔连眨两下。没有闪烁，也不会"啪"一下换个表情。</p></div>
+      <div class="card"><span class="ico">🖱️</span><h3>能被拎起来</h3>
+        <p>按住就能把它提起来，它会像玩偶一样钟摆式晃，松手自己落地站好。</p></div>
+      <div class="card"><span class="ico">🤝</span><h3>它俩认识彼此</h3>
+        <p>把两只放一起，会蹭脸、拥抱、亲亲，还会合唱。一只睡了，另一只会凑过去陪。</p></div>
+      <div class="card"><span class="ico">🔒</span><h3>真的不联网</h3>
+        <p>没有任何联网请求，没有账号，没有后台服务。你可以自己用防火墙验证。</p></div>
+    </div>
+
+    <h2 style="margin-top:64px">每个表情都是一张单独的图</h2>
+    <p class="lead">每只兔子 4 种表情，帧与帧之间做渐变过渡——所以眨眼看起来是眨眼，
+      而不是换图。</p>
+    <img class="shot" src="assets/expressions.jpg" alt="每只兔子的四种表情：睁眼、半睁、闭眼、害羞">
+
+    <div class="two" style="margin-top:64px">
+      <img src="assets/duo.jpg" alt="糯团和雪团在桌面上互动">
+      <div>
+        <h2>是同伴，不是小挂件</h2>
+        <p class="lead">两只凑近会互相反应：蹭一蹭、抱一下、一起打个盹。没人管它的时候，
+          它会自己溜达、伸懒腰，然后按自己的作息睡着。</p>
+      </div>
+    </div>
+
+    <div class="two" style="margin-top:44px">
+      <div>
+        <h2>它待在该待的地方</h2>
+        <p class="lead">无边框、透明、永远在最底层——兔子站在任务栏上，不会挡在你正在做的事前面。
+          你可以把它拖到任何位置，也可以让它自己走。</p>
+      </div>
+      <img src="assets/desktop.jpg" alt="兔子站在 Windows 任务栏上，其他窗口在它们上方">
+    </div>
+
+    <h2 style="margin-top:64px">还可以单独买：壁纸和表情包</h2>
+    <p class="lead">授权本身只含桌宠软件。想要壁纸（4 款，1080 × 2400）或表情包（18 张透明 PNG），
+      可以单独购买，也可以直接选「完整捆绑包」一次拿全。</p>
+    <img class="shot" src="assets/wallpapers.jpg" alt="四张含糯团雪团的手机壁纸">
+  </div>
+</section>
+
+<section id="pricing" style="background:#FFF6EC">
+  <div class="wrap">
+    <h2 style="text-align:center">价格很简单</h2>
+    <p class="lead" style="text-align:center">一次付清，永远没有订阅。</p>
+    <div class="plan">
+      <div style="font-weight:800;font-size:20px">糯团 &amp; 雪团 · 永久授权</div>
+      <div class="price-row" style="margin:16px 0 0">
+        <span class="price">$5.99</span>
+      </div>
+      <p class="fine" style="margin:4px 0 0">约合 ¥43</p>
+      <ul>
+        <li><b>两只都给你</b>——糯团和雪团</li>
+        <li><b>全部 21 种动作</b>与 25 种特效</li>
+        <li><b>Windows 10 / 11</b>：绿色免安装，解压即用</li>
+        <li><b>免费更新</b>，后续版本不用再付钱</li>
+        <li><b>你自己名下的电脑都能装</b>，不限台数</li>
+        <li><b>7 天无理由退款</b></li>
+      </ul>
+      <!-- ▼▼
+      <!-- 由 `_接支付.py` 生成，勿手改 -->
+      <a class="btn" id="buy" href="play.html">先在线免费试玩</a>
+      <p class="fine"><b>还没开卖。</b>Windows 版定价 <b>$5.99</b>，店铺正在走最后的资质审核，审核一过就开卖。<br>
+        在那之前这个按钮是免费试玩，可以先看看它们怎么动。
+        想开卖当天收到通知，写信到 <a href="mailto:fuxs9056@agent.qq.com">fuxs9056@agent.qq.com</a>。</p>
+<!-- ▲▲ -->
+      <p class="fine">结账由 <b>Waffo.com Limited</b> 处理（记录商户），付款后邮件收到下载链接（通常几分钟内）。
+        支持 Windows 10 / 11，绿色免安装，解压即用。<br>
+        想先看它动起来？<a href="play.html"><b>先在线免费试玩</b></a> —— 不用安装，不用注册。</p>
+    </div>
+
+    <h3 style="text-align:center;margin:52px 0 6px;font-size:23px">也可以只买你想要的那部分</h3>
+    <p class="lead" style="text-align:center;max-width:660px;margin:0 auto 26px">
+      全部都是一次性付费，付款后邮件收到下载链接，没有订阅。</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:16px">
+      <div style="background:#FFFFFF;border:2px solid #EFE3D6;border-radius:18px;padding:24px;display:flex;flex-direction:column">
+        <div style="font-weight:800;font-size:17px">手机壁纸包</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 0">$4.99</div>
+        <div style="font-size:14px;font-weight:700;color:#A87B4E;margin-top:3px">约合 ¥36</div>
+        <ul style="margin:14px 0 20px;padding-left:18px;font-size:15px;color:#7A6A5D;flex:1">
+          <li>4 款设计，1080 × 2400</li>
+          <li>每一款都有两只</li>
+          <li>自己名下的手机都能用</li>
+        </ul>
+        <a href="mailto:fuxs9056@agent.qq.com?subject=Mochi%20and%20Snow%20—%20tell%20me%20when%20it%20opens" rel="noopener" style="display:block;text-align:center;background:#3B2F27;color:#FFFBF6;font-weight:700;padding:14px 16px;border-radius:999px;text-decoration:none">开卖通知我 — $4.99</a>
+      </div>
+      <div style="background:#FFFFFF;border:2px solid #EFE3D6;border-radius:18px;padding:24px;display:flex;flex-direction:column">
+        <div style="font-weight:800;font-size:17px">表情包</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 0">$3.99</div>
+        <div style="font-size:14px;font-weight:700;color:#A87B4E;margin-top:3px">约合 ¥29</div>
+        <ul style="margin:14px 0 20px;padding-left:18px;font-size:15px;color:#7A6A5D;flex:1">
+          <li>18 张，240 × 240</li>
+          <li>透明 PNG，没有白底</li>
+          <li>任何聊天软件都能用</li>
+        </ul>
+        <a href="mailto:fuxs9056@agent.qq.com?subject=Mochi%20and%20Snow%20—%20tell%20me%20when%20it%20opens" rel="noopener" style="display:block;text-align:center;background:#3B2F27;color:#FFFBF6;font-weight:700;padding:14px 16px;border-radius:999px;text-decoration:none">开卖通知我 — $3.99</a>
+      </div>
+      <div style="background:#FFF6EC;border:2px solid #C89A6B;border-radius:18px;padding:24px;display:flex;flex-direction:column;position:relative">
+        <span style="position:absolute;top:-13px;left:24px;background:#C89A6B;color:#fff;font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px;letter-spacing:.6px">最划算</span>
+        <div style="font-weight:800;font-size:17px;margin-top:6px">完整捆绑包</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 0">$9.90</div>
+        <div style="font-size:14px;font-weight:700;color:#A87B4E;margin-top:3px">原价 $14.97 — 省 34%（约合 ¥71）</div>
+        <ul style="margin:14px 0 20px;padding-left:18px;font-size:15px;color:#7A6A5D;flex:1">
+          <li>桌宠本体（Windows）</li>
+          <li>全部 4 款壁纸</li>
+          <li>全部 18 张表情</li>
+        </ul>
+        <a href="mailto:fuxs9056@agent.qq.com?subject=Mochi%20and%20Snow%20—%20tell%20me%20when%20it%20opens" rel="noopener" style="display:block;text-align:center;background:#C89A6B;color:#FFFFFF;font-weight:700;padding:14px 16px;border-radius:999px;text-decoration:none">开卖通知我 — $9.90</a>
+      </div>
+    </div>
+    <div class="note">
+      <b>买之前先说清楚三件事：</b><br>
+      ① 这是 <b>Windows 电脑软件</b>，不是手机 App，手机装不了（壁纸包是单独的商品，那 4 张可以放手机）。<br>
+      ② 它是<b>绿色免安装</b>的，解压就能双击运行；首次运行 Windows 会弹一个蓝色的
+      "已保护你的电脑"，那是所有没买微软签名的软件都会遇到的，点「更多信息」→「仍要运行」即可。<br>
+      ③ 少数杀毒软件可能误报（因为它会移动窗口），按压缩包里说明加白名单就行。
+      如果你电脑上装了 360 或者火绒，建议先看一眼说明再装。
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>大家真正会问的</h2>
+    <p class="lead">买之前最常被问到的几件事，都写在这儿了。</p>
+
+    <details><summary>付款之后怎么拿到文件？</summary>
+      <p>结算是 <b>Waffo.com Limited</b> 处理的。你的付款一到账，我们就把下载链接发到你在结账时填写的邮箱，
+        通常一小时内送达。没有实物，不用等快递。</p>
+      <p>一小时还没收到？先翻一下垃圾邮件箱（邮件来自 <b>fuxs9056@agent.qq.com</b>），
+        然后写信到同一个地址，我们手动补发。链接不会过期，以后换了新电脑也能重新下载。</p></details>
+
+    <details open><summary>Windows 弹"已保护你的电脑"，是不是病毒？</summary>
+      <p>不是。那个蓝框叫 SmartScreen，任何没花钱买微软代码签名证书的新软件都会遇到，
+        独立软件基本都是这个待遇。点「更多信息」→「仍要运行」就行。它全程不联网，
+        你可以用防火墙自己验证这一点。</p></details>
+
+    <details><summary>杀软报毒了怎么办？</summary>
+      <p>有些杀软会对"会移动窗口的小程序"报警，因为这类行为和某些恶意软件重合。
+        把文件夹加进杀软白名单即可。压缩包里的说明文件写了 Defender、360、火绒三种
+        具体的加白步骤。</p></details>
+
+    <details><summary>要不要联网？会不会偷偷传数据？</summary>
+      <p>不联网。没有任何联网代码，也没有账号体系、授权校验服务器或统计上报。</p></details>
+
+    <details><summary>会装东西到系统里吗？</summary>
+      <p>不会。它是绿色版：解压到任意文件夹，双击 exe 就跑。不写注册表、不需要管理员权限。
+        不想用了，直接删文件夹。</p></details>
+
+    <details><summary>会不会占很多性能？</summary>
+      <p>空闲时 CPU 占用极低，而且打游戏或全屏时会自动暂停。它还会阻止电脑自动睡眠——
+        这是桌宠该做的事。</p></details>
+
+    <details><summary>能装在几台电脑上？</summary>
+      <p>你自己名下的电脑都能装，不限台数。但请不要转发给别人。</p></details>
+
+    <details><summary>不喜欢能退吗？</summary>
+      <p>购买后 7 天内发邮件给我们，无理由全额退款。详见
+        <a href="refund.html">退款政策</a>。</p></details>
+
+    <details><summary>支持哪些系统？</summary>
+      <p>Windows 10 / 11 64 位。8.1 和 7 一般也能跑，但我们只在 10 / 11 上测试。</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="zh.html" style="font-size:17px">糯团 <span>&amp;</span> 雪团</a>
+        <p style="margin:12px 0 0;max-width:340px">一个小型独立软件工作室，专门做手工打磨的桌面伙伴。</p>
+      </div>
+      <div>
+        <p style="margin:0 0 10px;font-weight:700;color:var(--ink)">客服</p>
+        <p style="margin:0 0 14px"><a href="mailto:fuxs9056@agent.qq.com"
+          style="margin:0">fuxs9056@agent.qq.com</a></p>
+        <p style="margin:0 0 10px;font-weight:700;color:var(--ink)">条款</p>
+        <p style="margin:0">
+          <a href="privacy.html">隐私政策</a>
+          <a href="terms.html">服务条款</a>
+          <a href="refund.html">退款政策</a>
+        </p>
+        <p style="margin:10px 0 0"><a href="role-assets/index.html">商用素材授权</a></p>
+        <p style="margin:14px 0 0;font-size:13px">法律条款以英文版为准。</p>
+      </div>
+    </div>
+    <p style="margin:34px 0 0;font-size:13.5px">© 2026 Mochi &amp; Snow · 糯团与雪团。
+      收款由 Waffo.com Limited 作为名义销售方（Merchant of Record）处理。</p>
+  </div>
+<p style="margin:16px 0 0;font-size:13.5px"><a href="alternatives/index.html">桌宠软件横向对比</a> · <a href="use-cases/index.html">使用场景</a> · <a href="checker/">角色一致性检测器</a> · <a href="role-assets/index.html">角色资产库</a></p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 角色一致性检测器 · 免费在线测角色有没有漂移</title>
+<meta name="description" content="上传同一角色的多张图，自动用 CIE Lab ΔE 量化测出角色有没有漂移（变脸）。AI 短剧 / 漫剧 / 动画制作免费自检工具。">
+<style>
+:root{
+  --bg:#F7F4EF; --card:#FFFFFF; --ink:#3A2E26; --sub:#7A6C60;
+  --line:#E2DAD0; --brand:#B08968; --brand-d:#8E6B4A;
+  --green:#2F7D46; --red:#B24C3C; --amber:#9A6A22; --soft:#EFE9E1;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Hiragino Sans GB",sans-serif;
+  line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:960px;margin:0 auto;padding:38px 20px 70px}
+h1{font-size:31px;margin:0 0 8px;letter-spacing:-.4px}
+.lead{color:var(--sub);font-size:15px;margin:0 0 6px}
+.tagline{color:var(--brand-d);font-size:14px;margin:0 0 26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:18px}
+.drop{border:2px dashed #D9CFC2;border-radius:14px;padding:40px 20px;text-align:center;
+  cursor:pointer;transition:.16s;background:#FCFAF7}
+.drop:hover,.drop.over{border-color:var(--brand);background:#FAF5EF}
+.drop b{display:block;font-size:16px;margin-bottom:5px}
+.drop span{color:var(--sub);font-size:13px}
+.thumbs{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.th{position:relative;width:104px;height:104px;border-radius:10px;overflow:hidden;
+  border:1px solid var(--line);background:#FAF8F4}
+.th img{width:100%;height:100%;object-fit:contain;display:block}
+.th button{position:absolute;top:3px;right:3px;width:20px;height:20px;border:0;border-radius:50%;
+  background:rgba(58,46,38,.72);color:#fff;font-size:12px;line-height:20px;cursor:pointer;padding:0}
+.th .de{position:absolute;left:0;bottom:0;right:0;background:rgba(255,255,255,.93);
+  font-size:11px;text-align:center;padding:2px 0;font-weight:600;border-top:1px solid var(--line)}
+.score{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.score .num{font-size:56px;font-weight:800;letter-spacing:-2px;line-height:1}
+.score .lbl{font-size:13px;color:var(--sub);text-transform:uppercase;letter-spacing:.6px}
+.verdict{font-size:15px;font-weight:600;padding:5px 13px;border-radius:999px;display:inline-block}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{font-size:12.5px;color:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+td.mono{font-variant-numeric:tabular-nums;font-weight:600}
+.matrix{overflow-x:auto}
+.matrix table{border-collapse:separate;border-spacing:3px;font-size:12.5px}
+.matrix td,.matrix th{border:0;text-align:center;padding:7px 8px;border-radius:7px;background:#FAF8F4}
+.matrix th{background:transparent;color:var(--sub)}
+.matrix td.d{font-variant-numeric:tabular-nums;font-weight:700}
+.swatch{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;
+  margin-right:6px;border:1px solid rgba(0,0,0,.12)}
+.note{font-size:13px;color:var(--sub);margin:14px 0 0}
+.hint{background:var(--soft);border-radius:10px;padding:13px 15px;font-size:13.5px;
+  color:#65584B;margin-top:16px}
+.cta{background:linear-gradient(135deg,#3A2E26,#5A4839);color:#F7F4EF;border-radius:16px;
+  padding:24px;margin-top:20px}
+.cta h3{margin:0 0 8px;font-size:19px;color:#fff}
+.cta p{margin:0 0 4px;font-size:14px;color:#D9CFC2;line-height:1.75}
+.cta b{color:#F0C89A}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;align-items:center}
+.btn{display:inline-block;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:600;
+  text-decoration:none;cursor:pointer;border:1px solid transparent;font-family:inherit;
+  background:#E8C9A0;color:#3A2E26;transition:.15s;line-height:1.4}
+.btn:hover{background:#F2DCBC}
+.btn.ghost{background:transparent;color:#E8D8C4;border-color:rgba(232,201,160,.45)}
+.btn.ghost:hover{background:rgba(232,201,160,.14)}
+.btn.lite{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn.lite:hover{background:#FAF5EF}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.actline{font-size:12.5px;color:#C9BCAE;margin-top:10px}
+.foot{font-size:12.5px;color:#9E9186;margin-top:26px;text-align:center;line-height:1.9}
+details{margin-top:12px}
+summary{cursor:pointer;font-size:13.5px;color:var(--brand-d);font-weight:600}
+details p{font-size:13px;color:var(--sub)}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AI 角色一致性检测器",
+  "alternateName": "AI角色变脸检测 · 角色漂移量化工具",
+  "description": "上传同一角色的多张图，自动用 CIE Lab ΔE*ab 量化测出角色有没有漂移（变脸）。AI 短剧、漫剧、动画制作免费自检工具，图片不上传服务器。",
+  "applicationCategory": "DesignApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "zh-CN",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CNY"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "AI 短剧里的角色为什么会一直变脸（角色不一致）？",
+      "acceptedAnswer": {"@type": "Answer", "text": "根因通常不是模型能力不够，而是缺少固定的「身份锚」：每集都在换参考图，或者用文字描述代替参考图，模型每次都要重新猜角色长相，误差逐镜累积，最后同一个角色在观众眼里变成了两个人。"}
+    },
+    {
+      "@type": "Question",
+      "name": "怎么量化判断角色有没有漂移？有没有客观标准？",
+      "acceptedAnswer": {"@type": "Answer", "text": "把同一角色的多张图缩放到统一尺寸、抠出主体像素、取中位色，转到 CIE Lab 色彩空间后计算 ΔE*ab 色差。判读尺子：ΔE<1 人眼不可辨、1–2 训练有素者可辨、2–3.5 明显可辨、3.5–5 显著差异、>5 属于不同色，>15 可判为不同角色。"}
+    },
+    {
+      "@type": "Question",
+      "name": "有没有免费的角色一致性检测工具？",
+      "acceptedAnswer": {"@type": "Answer", "text": "有。本页就是免费的在线检测器，上传多张同一个角色的图即可得到一致性得分、逐图 ΔE 明细和离群图提示，并给出一键可复制的检测报告，不需要注册。"}
+    },
+    {
+      "@type": "Question",
+      "name": "检测器会上传或保存我的图片吗？",
+      "acceptedAnswer": {"@type": "Answer", "text": "不会。全部计算在你的浏览器本地完成，图片不会离开你的设备，也不做人脸识别或身份识别。"}
+    },
+    {
+      "@type": "Question",
+      "name": "怎么才能让 AI 生成的角色在多镜头下保持一致？",
+      "acceptedAnswer": {"@type": "Answer", "text": "三步：一、先出一套角色三视图（正面/侧面/背面）冻结成「身份锚」；二、每个镜头都带同一套参考图，不要再改文字描述里的外貌词；三、一次只让模型做一个动作，不要同时解「转身+说话+拿东西」。另外参考图必须跨集冻结，中途换参考图等于重新定义角色。"}
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>AI 角色一致性检测器</h1>
+  <p class="lead">上传<strong>同一个角色</strong>的多张图（不同镜头 / 不同表情 / 不同角度），自动量化测出它有没有漂移。</p>
+  <p class="tagline">用 CIE Lab ΔE*ab 测 —— 不是"看着差不多"，是一个可以写进验收单的数字。</p>
+
+  <div class="card">
+    <div class="drop" id="drop">
+      <b>点这里选图，或把图片拖进来</b>
+      <span>支持多张 · 建议 2–12 张 · <strong>第 1 张当基准图</strong>（放最标准的那张）· 图片不会上传到任何服务器</span>
+      <span style="display:block;margin-top:6px;color:#9E9186;font-size:12px">最好用<b>同一景别</b>的图比（都是正脸，或都是全身）——全身立绘和头部特写的像素分布天然不同，会算出假漂移。</span>
+      <input type="file" id="file" accept="image/*" multiple hidden>
+    </div>
+    <div class="thumbs" id="thumbs"></div>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none">
+    <div class="score">
+      <div>
+        <div class="lbl">一致性得分</div>
+        <div class="num" id="score">—</div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div id="verdict"></div>
+        <div class="note" id="statLine"></div>
+      </div>
+    </div>
+
+    <table id="tbl">
+      <thead><tr><th>图</th><th>主体色</th><th>对基准 ΔE</th><th>与其余图均值</th><th>判读</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h4 style="margin:22px 0 4px;font-size:15px">两两 ΔE 矩阵</h4>
+    <div class="matrix" id="matrix"></div>
+
+    <div class="hint" id="advice"></div>
+
+    <details>
+      <summary>这个数字是怎么算出来的？（不是黑箱）</summary>
+      <p>① 每张图先缩放居中，抠出主体像素：图片带透明通道就按 alpha 抠；没有就先用四边中位色估背景、再取与背景距离 &gt; 60 的像素。<br>
+      ② 对主体像素取 RGB 中位色（中位数抗边缘抗锯齿干扰）。<br>
+      ③ 转 CIE Lab（D65 白点），算 ΔE*ab = √(ΔL² + Δa² + Δb²)。<br>
+      ④ 判读尺子：&lt;1 人眼不可辨 / 1–2 训练有素者可辨 / 2–3.5 明显可辨 / 3.5–5 显著差异 / &gt;5 不同色。</p>
+    </details>
+  </div>
+
+  <div class="cta">
+    <h3>测出来漂移了？有两条路</h3>
+    <p><b>路线一（自己修，免费）</b>：角色漂移的根因通常不是模型不行，是<b>没有"身份锚"</b>。
+       先出一套角色三视图当固定参考组，之后每个镜头都带上它，别用文字描述去猜脸。</p>
+    <p><b>路线二（直接用现成的）</b>：我们做 AI 角色资产的标准化交付 ——
+       多角度立绘 + 表情集 + rig 部件 + 动作序列 + 逐镜验收清单。
+       现成包授权 ¥199 起，定制一套 ¥980–4,800。</p>
+    <div class="btns">
+      <a class="btn" href="../role-assets/"
+         target="_blank" rel="noopener">看现成的角色资产包 →</a>
+      <button class="btn ghost" type="button" onclick="copyReport()">复制我的检测报告</button>
+    </div>
+    <div class="actline" id="actLine">把报告贴给同事 / 甲方，比截图更清楚 —— 里面带每张图的 ΔE 明细。</div>
+    <p style="margin-top:14px;font-size:13px">福源AI工作室 ｜ 不接玄学·命理·投资类 ｜ 不承诺播放量</p>
+  </div>
+
+  <div class="foot">
+    本工具用彩色统计做快速筛查，不做人脸识别、不做身份识别，图片全程留在你的浏览器里。<br>
+    结论是工程近似值，用于提前发现漂移，不能替代美术评审。
+  </div>
+
+</div>
+
+<script>
+const S = 200;                       // 统一样本边长
+const state = [];                    // {name, url, med:[r,g,b], cov}
+
+const $ = id => document.getElementById(id);
+
+/* ── 色彩数学 ─────────────────────────────── */
+function rgb2lab(r, g, b){
+  const f = c => { c /= 255; return c <= 0.04045 ? c/12.92 : Math.pow((c+0.055)/1.055, 2.4); };
+  const R = f(r), G = f(g), B = f(b);
+  const X = R*0.4124564 + G*0.3575761 + B*0.1804375;
+  const Y = R*0.2126729 + G*0.7151522 + B*0.0721750;
+  const Z = R*0.0193339 + G*0.1191920 + B*0.9503041;
+  const g_ = t => t > 0.008856 ? Math.cbrt(t) : (7.787*t + 16/116);
+  const fx = g_(X/0.95047), fy = g_(Y/1.0), fz = g_(Z/1.08883);
+  return [116*fy - 16, 500*(fx - fy), 200*(fy - fz)];
+}
+function deltaE(a, b){
+  const A = rgb2lab(a[0],a[1],a[2]), B = rgb2lab(b[0],b[1],b[2]);
+  return Math.hypot(A[0]-B[0], A[1]-B[1], A[2]-B[2]);
+}
+function deLabel(v){
+  if (v < 1)   return "人眼不可辨";
+  if (v < 2)   return "训练有素者可辨";
+  if (v < 3.5) return "明显可辨";
+  if (v < 5)   return "显著差异";
+  return "已属不同色";
+}
+function toScore(v){
+  if (v <= 3)  return 100 - v*1.5;
+  if (v <= 8)  return 95.5 - (v-3)*1.8;
+  if (v <= 15) return 86.5 - (v-8)*1.5;
+  return Math.max(76 - (v-15)*1.2, 40);
+}
+const median = arr => { const a = arr.slice().sort((x,y)=>x-y); return a[a.length>>1]; };
+const css = c => `rgb(${c[0]},${c[1]},${c[2]})`;
+
+/* ── 单图取样 ─────────────────────────────── */
+function measure(img){
+  const cv = document.createElement("canvas");
+  cv.width = cv.height = S;
+  const ctx = cv.getContext("2d", { willReadFrequently: true });
+  const r = Math.min(S/img.width, S/img.height);
+  const w = Math.max(1, Math.round(img.width*r)), h = Math.max(1, Math.round(img.height*r));
+  ctx.drawImage(img, Math.round((S-w)/2), Math.round((S-h)/2), w, h);
+  const d = ctx.getImageData(0,0,S,S).data;
+
+  // 抽样判断是否真透明
+  let hasAlpha = false;
+  for (let i = 3; i < d.length; i += 4*11){ if (d[i] < 200){ hasAlpha = true; break; } }
+
+  let bg = null;
+  if (!hasAlpha){
+    const er = [], eg = [], eb = [];
+    const push = p => { er.push(d[p]); eg.push(d[p+1]); eb.push(d[p+2]); };
+    for (let x = 0; x < S; x++){ push((0*S+x)*4); push(((S-1)*S+x)*4); }
+    for (let y = 0; y < S; y++){ push((y*S+0)*4); push((y*S+S-1)*4); }
+    bg = [median(er), median(eg), median(eb)];
+  }
+
+  const R = [], G = [], B = [];
+  let n = 0;
+  for (let p = 0; p < d.length; p += 4){
+    const r0 = d[p], g0 = d[p+1], b0 = d[p+2], a0 = d[p+3];
+    let keep;
+    if (hasAlpha) keep = a0 > 160;
+    else keep = Math.hypot(r0-bg[0], g0-bg[1], b0-bg[2]) > 60;
+    if (keep){ R.push(r0); G.push(g0); B.push(b0); n++; }
+  }
+  if (!n) return null;
+  return { med: [median(R), median(G), median(B)], cov: n/(S*S) };
+}
+
+/* ── 渲染 ─────────────────────────────────── */
+function render(){
+  const ts = $("thumbs"); ts.innerHTML = "";
+  const box = $("resultCard");
+  if (state.length < 2){ box.style.display = "none"; }
+  if (!state.length) return;
+
+  const base = state[0];
+  const des = state.map((s,i) => i === 0 ? 0 : deltaE(s.med, base.med));
+
+  // ★ 离群检测：只看平均分会被拉平 —— 「4 张同角色 + 1 张不同角色」平均下来
+  //   只有十来点，会被误判成"良好"。所以额外算每张图「与其余图的平均 ΔE」，
+  //   单独把不同角色那张揪出来。这才是创作者真正想要的那条信息。
+  const outAvg = state.map((s,i) => {
+    let sum = 0, n = 0;
+    state.forEach((t,j) => { if (j !== i){ sum += deltaE(s.med, t.med); n++; } });
+    return n ? sum / n : 0;
+  });
+  const outThr = 12;
+  const outliers = outAvg.map((v,i) => ({ i, v })).filter(o => o.v > outThr)
+                         .sort((a,b) => b.v - a.v);
+
+  state.forEach((s, i) => {
+    const el = document.createElement("div");
+    el.className = "th";
+    const dv = i === 0 ? des[1] || 0 : des[i];
+    const col = i === 0 ? "var(--sub)"
+              : (outAvg[i] > outThr ? "var(--red)"
+              : (outAvg[i] > 5 ? "var(--amber)" : "var(--green)"));
+    el.innerHTML = `<img src="${s.url}"><button title="移除">×</button>`
+      + (i === 0 ? `<div class="de" style="color:${col}">基准</div>`
+                 : `<div class="de" style="color:${col}">ΔE ${dv.toFixed(1)}</div>`);
+    el.querySelector("button").onclick = () => { state.splice(i,1); render(); };
+    ts.appendChild(el);
+  });
+
+  if (state.length < 2) return;
+  box.style.display = "block";
+
+  const pairs = [];
+  for (let i = 0; i < state.length; i++)
+    for (let j = i+1; j < state.length; j++)
+      pairs.push(deltaE(state[i].med, state[j].med));
+  const mean = pairs.reduce((a,b)=>a+b, 0) / pairs.length;
+  const worst = Math.max(...pairs);
+  const sc = Math.max(0, Math.min(100, toScore(mean)));
+
+  $("score").textContent = sc.toFixed(0);
+  let vc, vt;
+  if (outliers.length){
+    const who = outliers.map(o => "#" + (o.i + 1)).join("、");
+    if (outliers[0].v > 15){
+      vc = "var(--red)";
+      vt = `${who} 疑似不是同一角色（离群 ΔE ${outliers[0].v.toFixed(1)}）`;
+    } else {
+      vc = "var(--amber)";
+      vt = `${who} 与其余图差异偏大 —— 可能是景别/光照不同，也可能不是同一角色`;
+    }
+  } else if (sc >= 90){ vc = "var(--green)"; vt = "一致性优秀 —— 可判为同一角色";
+  } else if (sc >= 78){ vc = "var(--green)"; vt = "一致性良好 —— 基本可判为同一角色";
+  } else if (sc >= 60){ vc = "var(--amber)"; vt = "存在可见漂移 —— 建议加固定参考图重出";
+  } else { vc = "var(--red)"; vt = "漂移严重 —— 已跨出同角色判读区间"; }
+  $("verdict").innerHTML = `<span class="verdict" style="background:${vc}1A;color:${vc}">${vt}</span>`;
+  $("statLine").textContent =
+    `平均 ΔE ${mean.toFixed(1)}　最差 ${worst.toFixed(1)}　样本 ${state.length} 张　`
+    + `判读：${deLabel(mean)}`;
+
+  const tb = $("tbl").querySelector("tbody");
+  tb.innerHTML = "";
+  state.forEach((s, i) => {
+    const tr = document.createElement("tr");
+    const oa = outAvg[i];
+    const oc = i > 0 && oa > outThr ? "var(--red)" : (oa > 5 ? "var(--amber)" : "inherit");
+    tr.innerHTML = `<td>${s.name.length > 22 ? s.name.slice(0,20)+"…" : s.name}</td>
+      <td><span class="swatch" style="background:${css(s.med)}"></span>${css(s.med)}</td>
+      <td class="mono">${i === 0 ? "—" : des[i].toFixed(2)}</td>
+      <td class="mono" style="color:${oc}">${state.length > 1 ? oa.toFixed(2) : "—"}</td>
+      <td>${i === 0 ? "基准" : deLabel(des[i])}</td>`;
+    tb.appendChild(tr);
+  });
+
+  let m = `<table><tr><th></th>` + state.map((_,i)=>`<th>#${i+1}</th>`).join("") + `</tr>`;
+  for (let i = 0; i < state.length; i++){
+    m += `<tr><th>#${i+1}</th>`;
+    for (let j = 0; j < state.length; j++){
+      if (j < i){ m += `<td style="background:transparent"></td>`; continue; }
+      if (j === i){ m += `<td style="background:transparent">—</td>`; continue; }
+      const v = deltaE(state[i].med, state[j].med);
+      const col = v < 5 ? "var(--green)" : v < 12 ? "var(--amber)" : "var(--red)";
+      m += `<td class="d" style="color:${col}">${v.toFixed(1)}</td>`;
+    }
+    m += `</tr>`;
+  }
+  m += `</table>`;
+  $("matrix").innerHTML = m;
+
+  let ad = "";
+  if (outliers.length && outliers[0].v > outThr){
+    const who = outliers.map(o => "#" + (o.i + 1)).join("、");
+    ad = `<b>${who} 与其余图差异明显</b>（离群 ΔE ${outliers[0].v.toFixed(1)}）。只有两种可能，别混着看：<br>`
+       + `① <b>它本来就不是这个角色</b> —— 那这次检测的目的就达到了，把它挑出去单独处理。<br>`
+       + `② <b>它跟其余图不同景别或不同光照</b> —— 全身立绘和头部特写，主体像素分布天然不同，`
+       + `ΔE 会自己变高，这不是漂移。<b>把景别、光照、背景拉齐再测，结论才可靠。</b>`;
+  } else if (mean < 5 && state.length >= 3){
+    ad = "同角色 ΔE 很小 —— 这是好事。但要当心另一种情况：<b>如果所有图两两都极低（&lt; 1.5），"
+       + "也可能说明它们只是同一张图的不同裁切/调色</b>，并不能证明模型能在新镜头下稳住。"
+       + "真正的验证要拿<b>不同批次、不同镜头</b>出的图来测。";
+  } else if (mean < 8){
+    ad = "在可接受区间。想再压下去，按这三步做：① 先出角色三视图冻结成「身份锚」；"
+       + "② 每个镜头都带同一套参考图，别再改文字描述里的外貌词；③ 一次只做一个动作，"
+       + "别让模型同时解「转身+说话+拿东西」。";
+  } else {
+    ad = "漂移已经能被观众看出来。最常见的三个原因按概率排："
+       + "① 参考图每集都在换（<b>参考图必须冻结</b>）；② 用文字描述代替参考图；"
+       + "③ 跨工具接力——A 工具出分镜、B 工具做图生视频，两边对同一角色的理解不一致，误差叠加。";
+  }
+  $("advice").innerHTML = ad;
+
+  // 存一份结构化结果，供「复制检测报告」使用
+  lastReport = {
+    n: state.length, sc, mean, worst,
+    rows: state.map((s, i) => ({
+      name: s.name, de: i === 0 ? null : des[i],
+      out: outAvg[i], cov: s.cov || 0, med: s.med
+    })),
+    verdict: ($("verdict").textContent || "").trim(),
+    advice: ad.replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]+>/g, ""),
+    when: new Date().toLocaleString("zh-CN", { hour12: false })
+  };
+}
+
+/* ── 一键复制检测报告（把结论带走，贴给同事/甲方/群里）───── */
+let lastReport = null;
+function copyReport(){
+  const line = $("actLine");
+  if (!lastReport){
+    line.textContent = "先上传 2 张以上同一个角色的图，测一次再复制。";
+    line.style.color = "#F0C89A";
+    return;
+  }
+  const txt = buildReport(lastReport);
+  const box = showReportBox(txt);              // ★ 先摆出来：报告永远可见可选中
+  const setMsg = (m, c) => { line.textContent = m; line.style.color = c; };
+
+  // 同步路径优先：execCommand 同步返回结果，在用户手势内 100% 可用。
+  // 异步 clipboard API 在失焦/无手势时会挂起 → 静默失败会让传播机制失效，
+  // 所以它只当加速器，绝不当作唯一路径。
+  if (syncCopy(txt)){
+    setMsg("已复制到剪贴板 —— 直接粘贴给同事、甲方或发到群里即可。", "#9FD8B4");
+    return;
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(
+      () => setMsg("已复制到剪贴板 —— 直接粘贴给同事、甲方或发到群里即可。", "#9FD8B4"),
+      () => { setMsg("未能自动复制 —— 报告已在下方框中选中，按 Ctrl+C 即可。", "#F0C89A"); box.select(); }
+    );
+  } else {
+    setMsg("未能自动复制 —— 报告已在下方框中选中，按 Ctrl+C 即可。", "#F0C89A");
+    box.select();
+  }
+}
+function showReportBox(txt){
+  const line = $("actLine");
+  let box = document.getElementById("reportBox");
+  if (!box){
+    box = document.createElement("textarea");
+    box.id = "reportBox";
+    box.readOnly = true;
+    box.spellcheck = false;
+    box.style.cssText = "width:100%;height:172px;margin-top:12px;border-radius:9px;"
+      + "border:1px solid rgba(232,201,160,.35);background:rgba(0,0,0,.2);color:#EDE3D6;"
+      + "font-size:12px;line-height:1.7;padding:11px;resize:vertical;"
+      + "font-family:ui-monospace,Menlo,Consolas,monospace";
+    box.onclick = () => box.select();
+    line.parentNode.insertBefore(box, line.nextSibling);
+  }
+  box.value = txt;
+  return box;
+}
+function syncCopy(txt){
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = txt;
+    ta.setAttribute("readonly", "");
+    ta.style.cssText = "position:fixed;left:-9999px;top:0;opacity:0";
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, txt.length);
+    const ok = document.execCommand("copy");
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+function buildReport(r){
+  const t = [];
+  t.push("【AI 角色一致性检测报告】");
+  t.push("检测时间：" + r.when + "　样本 " + r.n + " 张");
+  t.push("");
+  t.push("综合一致性：" + r.sc.toFixed(0) + "/100　" + r.verdict);
+  t.push("平均 ΔE " + r.mean.toFixed(2) + "　最差 ΔE " + r.worst.toFixed(2));
+  t.push("尺子：CIE Lab ΔE*ab（<1 不可辨 / <2 训练有素者可辨 / >5 显著差异 / >15 判为不同角色）");
+  t.push("");
+  t.push("逐图明细（以 #1 为基准）：");
+  r.rows.forEach((x, i) => {
+    const m = "#" + (i + 1) + " " + x.name;
+    t.push(x.de === null
+      ? "  " + m + "　基准图"
+      : "  " + m + "　ΔE " + x.de.toFixed(2) + "　与其余图均值 " + x.out.toFixed(2));
+  });
+  t.push("");
+  t.push("结论与建议：" + r.advice);
+  t.push("");
+  t.push("检测工具：AI 角色一致性检测器（浏览器本地计算，图片不上传）");
+  return t.join("\n");
+}
+
+/* ── 交互 ─────────────────────────────────── */
+function addFiles(files){
+  const list = [...files].filter(f => f.type.startsWith("image/"));
+  let left = list.length;
+  if (!left) return;
+  list.forEach(f => {
+    const url = URL.createObjectURL(f);
+    const img = new Image();
+    img.onload = () => {
+      const m = measure(img);
+      state.push({ name: f.name, url, ...(m || { med: [128,128,128], cov: 0 }) });
+      if (--left === 0) render();
+    };
+    img.onerror = () => { if (--left === 0) render(); };
+    img.src = url;
+  });
+}
+
+const drop = $("drop"), file = $("file");
+drop.onclick = () => file.click();
+file.onchange = e => { addFiles(e.target.files); file.value = ""; };
+["dragenter","dragover"].forEach(t => drop.addEventListener(t, e => {
+  e.preventDefault(); drop.classList.add("over"); }));
+["dragleave","drop"].forEach(t => drop.addEventListener(t, e => {
+  e.preventDefault(); drop.classList.remove("over"); }));
+drop.addEventListener("drop", e => { if (e.dataTransfer.files) addFiles(e.dataTransfer.files); });
+window.addEventListener("paste", e => { if (e.clipboardData.files.length) addFiles(e.clipboardData.files); });
+</script>
+</body>
+</html>

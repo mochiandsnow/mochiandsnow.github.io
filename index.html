@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="waffo-verify" content="1f28617a8826b1fd6beedcb0d1da76bf">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mochi &amp; Snow — Two Tiny Bunnies Living on Your Desktop</title>
+<meta name="description" content="Mochi &amp; Snow are two hand-crafted desktop bunnies for Windows. 21 animated actions, natural blinking, drag-and-drop, and they play with each other. 100% offline. One-time purchase.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mochi &amp; Snow">
+<meta property="og:title" content="Mochi &amp; Snow — two tiny bunnies living on your desktop">
+<meta property="og:description" content="Try them free in your browser. The Windows version walks on your real desktop: 21 actions, no install and no network.">
+<meta property="og:image" content="https://mochiandsnow.com/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://mochiandsnow.com/index.html">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mochi &amp; Snow — desktop bunnies">
+<meta name="twitter:description" content="Two illustrated lop-eared bunnies for your desktop. Try them free in your browser, no signup.">
+<meta name="twitter:image" content="https://mochiandsnow.com/assets/og.jpg">
+<link rel="canonical" href="https://mochiandsnow.com/index.html">
+<link rel="alternate" hreflang="zh-CN" href="https://mochiandsnow.com/zh.html">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<style>
+  :root{
+    --bg:#FFFBF6; --card:#FFFFFF; --ink:#3B2F27; --muted:#7A6A5D;
+    --line:#EFE3D6; --caramel:#C89A6B; --caramel-d:#A87B4E;
+    --pink:#E8A0B4; --pink-d:#D4809A; --ok:#3E8E6B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--caramel-d)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{padding:18px 0;border-bottom:1px solid var(--line);position:sticky;top:0;
+    background:rgba(255,251,246,.92);backdrop-filter:blur(10px);z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.2px;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--pink-d)}
+  .nav a.lk{margin-left:22px;color:var(--muted);text-decoration:none;font-size:15px}
+  .nav a.lk:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--caramel-d);color:#fff;text-decoration:none;
+    padding:13px 26px;border-radius:999px;font-weight:700;border:0;cursor:pointer;
+    box-shadow:0 8px 20px rgba(168,123,78,.22);transition:.15s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 10px 24px rgba(168,123,78,.3)}
+  .btn.alt{background:#fff;color:var(--caramel-d);border:1.5px solid var(--line);box-shadow:none}
+  .btn.sm{padding:9px 18px;font-size:14px}
+
+  .hero{padding:56px 0 22px;text-align:center}
+  .kicker{display:inline-block;background:#FDF0E4;color:var(--caramel-d);font-weight:700;
+    font-size:13px;letter-spacing:.4px;padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  h1{font-size:clamp(30px,4.6vw,50px);line-height:1.16;letter-spacing:-1px;margin:0 0 14px}
+  .sub{font-size:clamp(16px,2vw,19px);color:var(--muted);max-width:660px;margin:0 auto 30px}
+  .heroimg{width:100%;border-radius:22px;display:block;
+    box-shadow:0 18px 46px rgba(120,90,60,.16)}
+  .price-row{display:flex;align-items:center;justify-content:center;gap:14px;margin:30px 0 10px;flex-wrap:wrap}
+  .price{font-size:34px;font-weight:800;letter-spacing:-.5px}
+  .was{color:var(--muted);text-decoration:line-through;font-size:19px}
+  .badge{background:#EAF6F0;color:var(--ok);font-weight:700;font-size:13px;
+    padding:5px 12px;border-radius:999px}
+  .fine{font-size:13.5px;color:var(--muted);margin-top:12px}
+
+  section{padding:64px 0}
+  h2{font-size:clamp(23px,3vw,32px);letter-spacing:-.5px;margin:0 0 10px}
+  .lead{color:var(--muted);margin:0 0 34px;max-width:720px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .card h3{margin:0 0 8px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+  .ico{font-size:24px;margin-bottom:10px;display:block}
+  .shot{width:100%;border-radius:18px;border:1px solid var(--line);display:block;margin-top:12px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .two img{width:100%;border-radius:20px;border:1px solid var(--line)}
+  @media(max-width:800px){.two{grid-template-columns:1fr;gap:22px}.nav a.lk{display:none}}
+
+  .plan{background:var(--card);border:2px solid var(--caramel);border-radius:22px;
+    padding:34px;max-width:560px;margin:0 auto;text-align:center;
+    box-shadow:0 16px 40px rgba(168,123,78,.12)}
+  .plan ul{list-style:none;padding:0;margin:22px 0;text-align:left}
+  .plan li{padding:8px 0 8px 30px;position:relative;color:var(--muted)}
+  .plan li:before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:800}
+  .plan li b{color:var(--ink)}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:16px 20px;margin-bottom:10px}
+  details summary{cursor:pointer;font-weight:700;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary:before{content:"+ ";color:var(--caramel-d);font-weight:800}
+  details[open] summary:before{content:"− "}
+  details p{color:var(--muted);margin:12px 0 0;font-size:15px}
+  code{background:#F6EFE7;padding:2px 6px;border-radius:6px;font-size:13.5px}
+
+  .note{background:#FFF7EC;border:1px solid #F2DFC6;border-radius:14px;padding:18px 22px;
+    font-size:15px;color:#7A5B36;margin-top:26px}
+
+  footer{border-top:1px solid var(--line);padding:38px 0 54px;color:var(--muted);font-size:14.5px}
+  .fgrid{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap}
+  footer a{color:var(--muted);text-decoration:none;margin-right:20px}
+  footer a:hover{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="index.html">Mochi <span>&amp;</span> Snow</a>
+    <div>
+      <a class="lk" href="play.html">Try it free</a>
+      <a class="lk" href="#features">Features</a>
+      <a class="lk" href="#pricing">Pricing</a>
+      <a class="lk" href="#faq">FAQ</a>
+      <a class="lk" href="alternatives/index.html">Compare</a>
+      <a class="lk" href="zh.html">中文</a>
+      <a class="btn sm" href="#pricing">Get it</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <span class="kicker">FOR WINDOWS 10 &amp; 11 · 100% OFFLINE</span>
+  <h1>Two tiny bunnies,<br>living on your desktop.</h1>
+  <p class="sub">Mochi and Snow sit on top of your windows, wander around your screen,
+    get picked up by the ears, and play with each other. No accounts. No internet. No fuss.</p>
+  <img class="heroimg" src="assets/hero.jpg" alt="Mochi, a caramel-coloured bunny, and Snow, a white bunny with a pink bow">
+  <div class="price-row">
+    <span class="price">$5.99</span>
+    <span class="badge">Lifetime licence</span>
+  </div>
+  <a class="btn" href="#pricing">Buy Mochi &amp; Snow</a>
+  <p class="fine" style="margin-top:16px">Not sure yet? <a href="play.html"><b>Try them free in your browser</b></a> — no install, no signup.</p>
+  <p class="fine">One-time payment · Lifetime licence · Free updates · 7-day refund</p>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Made with care, not with a template</h2>
+    <p class="lead">Every movement is hand-tuned. Nothing is a stitched GIF loop — the bunnies
+      are built from a skeleton, so they squash, stretch, lean and settle like something alive.</p>
+    <div class="grid">
+      <div class="card"><span class="ico">🐰</span><h3>Two original characters</h3>
+        <p>Mochi, a caramel-brown lop, and Snow, a white lop with a pink bow. Each has its own
+          proportions, fur texture and face.</p></div>
+      <div class="card"><span class="ico">🎬</span><h3>21 animated actions</h3>
+        <p>Idle, walk, run, hop, jump, spin, peek, turn, look around, shake, paddle — plus
+          25 expressive comic effects.</p></div>
+      <div class="card"><span class="ico">👀</span><h3>Real blinking</h3>
+        <p>Three eye states with natural timing: quick to close, slow to open, the occasional
+          double blink. No flicker, no popping.</p></div>
+      <div class="card"><span class="ico">🖱️</span><h3>Pick them up</h3>
+        <p>Grab one and it dangles from your cursor with a soft pendulum swing, then sets itself
+          down when you let go.</p></div>
+      <div class="card"><span class="ico">🤝</span><h3>They know each other</h3>
+        <p>Put them side by side and they nuzzle, hug, kiss, or sing a duet together. Just like
+          real companions.</p></div>
+      <div class="card"><span class="ico">🔒</span><h3>Truly offline</h3>
+        <p>No network calls, no login, no telemetry, no background service. It never phones home,
+          because it has nowhere to phone.</p></div>
+    </div>
+
+    <h2 style="margin-top:64px">Every mood, its own artwork</h2>
+    <p class="lead">Four facial expressions per bunny, blended smoothly so a blink reads as a
+      blink and not as a frame swap.</p>
+    <img class="shot" src="assets/expressions.jpg" alt="Four facial expressions for each bunny: eyes open, half-closed, eyes shut, shy">
+
+    <div class="two" style="margin-top:64px">
+      <img src="assets/duo.jpg" alt="Mochi and Snow interacting on the desktop">
+      <div>
+        <h2>Companions, not widgets</h2>
+        <p class="lead">When the two are near each other they react — a nuzzle, a hug, a shared
+          nap. When one is asleep the other will tuck in beside it. Leave them alone and they
+          will wander, stretch, and fall asleep on their own schedule.</p>
+      </div>
+    </div>
+
+    <div class="two" style="margin-top:44px">
+      <div>
+        <h2>It sits where it should</h2>
+        <p class="lead">Transparent, borderless, and always at the bottom of your stack — the
+          bunnies stand on your taskbar, not on top of your work. Drag them anywhere, or let
+          them roam.</p>
+      </div>
+      <img src="assets/desktop.jpg" alt="The bunnies standing on the Windows taskbar, with other apps open above">
+    </div>
+
+    <h2 style="margin-top:64px">Also available: wallpapers and stickers</h2>
+    <p class="lead">The licence covers the desktop pet itself. The wallpapers (4 designs,
+      1080&nbsp;×&nbsp;2400) and the sticker set (18 transparent PNGs) are sold separately —
+      or included together in the Complete Bundle.</p>
+    <img class="shot" src="assets/wallpapers.jpg" alt="Four phone wallpapers featuring the bunnies">
+  </div>
+</section>
+
+<section id="pricing" style="background:#FFF6EC">
+  <div class="wrap">
+    <h2 style="text-align:center">Simple pricing</h2>
+    <p class="lead" style="text-align:center;margin-left:auto;margin-right:auto">
+      One payment. No subscription, ever.</p>
+    <div class="plan">
+      <div style="font-weight:800;font-size:20px">Mochi &amp; Snow — Lifetime Licence</div>
+      <div class="price-row" style="margin:16px 0 0">
+        <span class="price">$5.99</span>
+      </div>
+      <ul>
+        <li><b>Both bunnies</b> — Mochi and Snow</li>
+        <li><b>All 21 actions</b> and 25 comic effects</li>
+        <li><b>Windows 10 / 11</b> — green build, no installer</li>
+        <li><b>Free updates</b> for the lifetime of the app</li>
+        <li><b>Use on your own computers</b>, as many as you like</li>
+        <li><b>7-day refund</b>, no questions asked</li>
+      </ul>
+      <!-- ▼▼
+      <!-- 由 `_接支付.py` 生成，勿手改 -->
+      <a class="btn" id="buy" href="play.html">Try the free browser demo</a>
+      <p class="fine"><b>Not on sale yet.</b> The Windows build is <b>$5.99</b> and the store is in
+        final approval — checkout opens shortly.<br>
+        Until then this button is the free browser demo, so you can see how they move.
+        Want a shout the day it opens? Write to <a href="mailto:fuxs9056@agent.qq.com">fuxs9056@agent.qq.com</a>.</p>
+<!-- ▲▲ -->
+      <p class="fine">Checkout is handled by <b>Waffo.com Limited</b> (merchant of record).
+        Runs on Windows 10 / 11 — green build, unzip and run, no installer.<br>
+        Want to see it move first? <a href="play.html"><b>Try them free in your browser</b></a> — no install, no signup.</p>
+    </div>
+
+    <h3 style="text-align:center;margin:52px 0 6px;font-size:23px">Or pick just the parts you want</h3>
+    <p class="lead" style="text-align:center;max-width:660px;margin:0 auto 26px">
+      Every option is a one-time payment, with a download link sent to your email.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:16px">
+      <div style="background:#FFFFFF;border:2px solid #EFE3D6;border-radius:18px;padding:24px;display:flex;flex-direction:column">
+        <div style="font-weight:800;font-size:17px">Wallpaper Pack</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 0">$4.99</div>
+        <ul style="margin:14px 0 20px;padding-left:18px;font-size:15px;color:#7A6A5D;flex:1">
+          <li>4 designs, 1080 × 2400</li>
+          <li>Both bunnies in every one</li>
+          <li>Use on all your own phones</li>
+        </ul>
+        <a href="mailto:fuxs9056@agent.qq.com?subject=Mochi%20and%20Snow%20—%20tell%20me%20when%20it%20opens" rel="noopener" style="display:block;text-align:center;background:#3B2F27;color:#FFFBF6;font-weight:700;padding:14px 16px;border-radius:999px;text-decoration:none">Tell me when it opens — $4.99</a>
+      </div>
+      <div style="background:#FFFFFF;border:2px solid #EFE3D6;border-radius:18px;padding:24px;display:flex;flex-direction:column">
+        <div style="font-weight:800;font-size:17px">Sticker Pack</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 0">$3.99</div>
+        <ul style="margin:14px 0 20px;padding-left:18px;font-size:15px;color:#7A6A5D;flex:1">
+          <li>18 stickers, 240 × 240</li>
+          <li>Transparent PNG — no white box</li>
+          <li>Any chat app, anywhere</li>
+        </ul>
+        <a href="mailto:fuxs9056@agent.qq.com?subject=Mochi%20and%20Snow%20—%20tell%20me%20when%20it%20opens" rel="noopener" style="display:block;text-align:center;background:#3B2F27;color:#FFFBF6;font-weight:700;padding:14px 16px;border-radius:999px;text-decoration:none">Tell me when it opens — $3.99</a>
+      </div>
+      <div style="background:#FFF6EC;border:2px solid #C89A6B;border-radius:18px;padding:24px;display:flex;flex-direction:column;position:relative">
+        <span style="position:absolute;top:-13px;left:24px;background:#C89A6B;color:#fff;font-size:12px;font-weight:800;padding:4px 12px;border-radius:999px;letter-spacing:.6px">BEST VALUE</span>
+        <div style="font-weight:800;font-size:17px;margin-top:6px">Complete Bundle</div>
+        <div style="font-size:30px;font-weight:800;letter-spacing:-.5px;margin:8px 0 0">$9.90</div>
+        <div style="font-size:14px;font-weight:700;color:#A87B4E;margin-top:3px">$14.97 of value — save 34%</div>
+        <ul style="margin:14px 0 20px;padding-left:18px;font-size:15px;color:#7A6A5D;flex:1">
+          <li>The desktop pet (Windows)</li>
+          <li>All 4 wallpapers</li>
+          <li>All 18 stickers</li>
+        </ul>
+        <a href="mailto:fuxs9056@agent.qq.com?subject=Mochi%20and%20Snow%20—%20tell%20me%20when%20it%20opens" rel="noopener" style="display:block;text-align:center;background:#C89A6B;color:#FFFFFF;font-weight:700;padding:14px 16px;border-radius:999px;text-decoration:none">Tell me when it opens — $9.90</a>
+      </div>
+    </div>
+    <div class="note">
+      <b>One honest note before you buy:</b> the bunnies' speech bubbles are currently in
+      Simplified Chinese, and so is the right-click menu. The art, animation and behaviour are
+      completely language-neutral and everything works fine — but if you don't read Chinese,
+      you'll be looking at a few lines of text you can't read. An English build is on the
+      roadmap. If that's a dealbreaker, ask us for a refund within 7 days.
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <p class="lead">The things people actually ask before buying.</p>
+
+    <details><summary>How do I get the files after I pay?</summary>
+      <p>Checkout is handled by <b>Waffo.com Limited</b>. The moment your payment clears we send
+        the download link to the email address you enter at checkout — usually within the hour.
+        Nothing is shipped, so there is no post to wait for.</p>
+      <p>Not there after an hour? Check your spam folder (the message comes from
+        <b>fuxs9056@agent.qq.com</b>), then write to that same address and we will send it by
+        hand. The links never expire, so you can also re-download them later on a new computer.</p></details>
+
+    <details open><summary>Windows says "Windows protected your PC". Is this a virus?</summary>
+      <p>No. That blue box is SmartScreen, and it appears for <em>any</em> new app that hasn't
+        paid Microsoft for a code-signing certificate — which is most indie software. Click
+        <b>More info</b>, then <b>Run anyway</b>. The app makes no network connections at all,
+        so you can verify that yourself with any firewall tool.</p></details>
+
+    <details><summary>My antivirus flagged it. Should I worry?</summary>
+      <p>Some antivirus engines flag small apps that move windows around, because that behaviour
+        overlaps with what certain malware does. Add the folder to your antivirus allow-list.
+        The exact steps for Microsoft Defender, 360 and Huorong are in the README inside the
+        download.</p></details>
+
+    <details><summary>Does it need an internet connection?</summary>
+      <p>No. It works completely offline and never connects to anything. There is no account,
+        no licence server and no telemetry.</p></details>
+
+    <details><summary>Does it install anything?</summary>
+      <p>No. It's portable. Unzip it anywhere and double-click the .exe. No installer, no
+        registry entries, no admin rights needed. To remove it, delete the folder.</p></details>
+
+    <details><summary>Will it slow my computer down?</summary>
+      <p>It idles at a very low CPU cost and pauses itself while you're playing games or running
+        a full-screen app. It also stops your PC from sleeping automatically, which is normally
+        what you want from a desktop pet.</p></details>
+
+    <details><summary>Can I run it on more than one computer?</summary>
+      <p>Yes — use it on all the computers you personally own. Please don't redistribute it.</p></details>
+
+    <details><summary>What if I don't like it?</summary>
+      <p>Email us within 7 days of purchase and we'll refund you in full, no questions asked.
+        See our <a href="refund.html">Refund Policy</a>.</p></details>
+
+    <details><summary>Which Windows versions are supported?</summary>
+      <p>Windows 10 and Windows 11, 64-bit. It also runs on Windows 8.1 and 7, though we only
+        test on 10 and 11.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="logo" href="index.html" style="font-size:17px">Mochi <span>&amp;</span> Snow</a>
+        <p style="margin:12px 0 0;max-width:340px">A small independent software studio making
+          hand-crafted desktop companions.</p>
+      </div>
+      <div>
+        <p style="margin:0 0 10px;font-weight:700;color:var(--ink)">Support</p>
+        <p style="margin:0 0 14px"><a href="mailto:fuxs9056@agent.qq.com"
+          style="margin:0">fuxs9056@agent.qq.com</a></p>
+        <p style="margin:0 0 10px;font-weight:700;color:var(--ink)">Legal</p>
+        <p style="margin:0">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Service</a>
+          <a href="refund.html">Refund Policy</a>
+        </p>
+        <p style="margin:10px 0 0">
+          <a href="alternatives/index.html">Compare desktop pets</a>
+          <a href="use-cases/index.html">Use cases</a>
+          <a href="checker/">Character checker</a>
+          <a href="role-assets/index.html">Role Asset Pack</a>
+        </p>
+      </div>
+    </div>
+    <p style="margin:34px 0 0;font-size:13.5px">© 2026 Mochi &amp; Snow. All rights reserved.
+      Payments are processed by Waffo.com Limited as merchant of record.</p>
+  </div>
+</footer>
+
+</body>
+</html>

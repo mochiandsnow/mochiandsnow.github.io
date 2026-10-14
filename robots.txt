@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+# ★买家专用交付目录：只给已付款买家，绝不能被搜索引擎收录
+Disallow: /dl/
+
+# ★站点地图：指向正式域名，正式站上线后自动生效
+Sitemap: https://mochiandsnow.com/sitemap.xml

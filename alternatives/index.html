@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop pet apps compared — Desktop Mate, Live2DViewerEX, Shimeji</title>
+<meta name="description" content="An honest comparison of the desktop pet apps people actually consider, with prices and platform support read from public sources on 2026-10-11. Pick by what you already own.">
+<link rel="canonical" href="https://mochiandsnow.com/alternatives/index.html">
+<link rel="alternate" hreflang="zh-CN" href="https://mochiandsnow.com/zh.html">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/icon-192.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mochi &amp; Snow">
+<meta property="og:title" content="Desktop pet apps compared — Desktop Mate, Live2DViewerEX, Shimeji">
+<meta property="og:description" content="An honest comparison of the desktop pet apps people actually consider, with prices and platform support read from public sources on 2026-10-11. Pick by what you already own.">
+<meta property="og:url" content="https://mochiandsnow.com/alternatives/index.html">
+<meta property="og:image" content="https://mochiandsnow.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#FFFBF6; --card:#FFFFFF; --ink:#3B2F27; --muted:#7A6A5D;
+    --line:#EFE3D6; --caramel:#C89A6B; --caramel-d:#A87B4E;
+    --pink:#E8A0B4; --pink-d:#D4809A; --ok:#3E8E6B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--caramel-d)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{padding:18px 0;border-bottom:1px solid var(--line);
+    background:rgba(255,251,246,.92);backdrop-filter:blur(10px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.2px;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--pink-d)}
+  .nav a.lk{margin-left:22px;color:var(--muted);text-decoration:none;font-size:15px}
+  .nav a.lk:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--caramel-d);color:#fff;text-decoration:none;
+    padding:13px 26px;border-radius:999px;font-weight:700;border:0;cursor:pointer;
+    box-shadow:0 8px 20px rgba(168,123,78,.22)}
+  .btn.alt{background:#fff;color:var(--caramel-d);border:1.5px solid var(--line);box-shadow:none}
+  .btn.sm{padding:9px 18px;font-size:14px}
+  .hero{padding:48px 0 8px}
+  .kicker{display:inline-block;background:#FDF0E4;color:var(--caramel-d);font-weight:700;
+    font-size:13px;letter-spacing:.4px;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  h1{font-size:clamp(28px,4.2vw,44px);line-height:1.18;letter-spacing:-.8px;margin:0 0 14px}
+  h2{font-size:clamp(22px,2.8vw,30px);letter-spacing:-.5px;margin:0 0 12px}
+  h3{margin:26px 0 8px;font-size:18px}
+  .sub{font-size:clamp(16px,1.9vw,18px);color:var(--muted);max-width:760px;margin:0 0 22px}
+  .lead{color:var(--muted);margin:0 0 26px;max-width:780px}
+  section{padding:44px 0}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px}
+  th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#FDF6EE;font-size:13.5px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+  td.us{background:#FCFAF6}
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  ul.plain{list-style:none;padding:0;margin:0}
+  ul.plain li{padding:7px 0 7px 28px;position:relative;color:var(--muted)}
+  ul.plain li:before{content:"\2022";position:absolute;left:8px;color:var(--caramel);font-weight:800}
+  ul.no li:before{content:"\2715";color:#C0705F}
+  ul.yes li:before{content:"\2713";color:var(--ok)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}.nav a.lk{display:none}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .card.us{border:2px solid var(--caramel)}
+  .card h3{margin-top:0}
+  .card p{color:var(--muted)}
+  .note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);
+    padding:2px 0 2px 14px;margin:22px 0}
+  .cta{background:#FDF6EE;border:1px solid var(--line);border-radius:20px;padding:30px;
+    text-align:center;margin:10px 0}
+  .cta h2{margin-bottom:8px}
+  .cta p{color:var(--muted);margin:0 0 20px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 18px;margin-bottom:10px}
+  summary{font-weight:700;cursor:pointer}
+  details p{color:var(--muted);margin:10px 0 0}
+  footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;margin-top:30px}
+  .crumbs{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .crumbs a{color:var(--muted)}
+  .tiny{font-size:13.5px;color:var(--muted)}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","url":"https://mochiandsnow.com/alternatives/index.html","mainEntity":[{"@type":"Question","name":"Which desktop pet app should I start with?","acceptedAnswer":{"@type":"Answer","text":"Start from what you already have. If you own Live2D models, Live2DViewerEX will use them. If you want a licensed 3D anime character, Desktop Mate sells those as DLC. If you want free and open source and will build your own sprite pack, Shimeji is hard to beat. Mochi & Snow is for the case where you want two finished original characters and pay for them once."}},{"@type":"Question","name":"Is Mochi & Snow free?","acceptedAnswer":{"@type":"Answer","text":"The browser demo is free and needs no signup, so you can watch the bunnies move before paying. The Windows app is a one-time $5.99. There is no subscription and no character DLC."}},{"@type":"Question","name":"Does Mochi & Snow cost more than the alternatives?","acceptedAnswer":{"@type":"Answer","text":"Compared with Live2DViewerEX at $4.99 it costs about a dollar more, and unlike that app it includes the characters. Compared with Desktop Mate the app is not free, but you are not buying characters at about ¥76 each afterwards. Compared with Shimeji it costs money where Shimeji is free — Shimeji asks for a Java install and XML work instead."}},{"@type":"Question","name":"Can I run Mochi & Snow on macOS or Linux?","acceptedAnswer":{"@type":"Answer","text":"Mochi & Snow is a Windows 10 and 11 app. Desktop Mate and Live2DViewerEX ship macOS and Linux builds, and Shimeji has macOS and Linux forks. If you are not on Windows, one of those is the better answer."}},{"@type":"Question","name":"Do these apps need an internet connection?","acceptedAnswer":{"@type":"Answer","text":"The Mochi & Snow desktop app makes no network calls at all. Desktop Mate and Live2DViewerEX both use a store and a workshop for content, so they need a connection to fetch new characters or models."}},{"@type":"Question","name":"Are there other desktop pet apps worth knowing about?","acceptedAnswer":{"@type":"Answer","text":"Yes, there is a long tail of smaller projects, and Chinese-language roundups of desktop pet software list several dozen. We deliberately put only the four most commonly compared apps here, because a page listing forty tools tells you nothing about which one fits your machine."}},{"@type":"Question","name":"Why does this page exist?","acceptedAnswer":{"@type":"Answer","text":"Because most best-desktop-pet pages do not tell you what you have to install first, or what an extra character costs. Each app below is described by what it asks of you, not by how nice it sounds."}}]}</script>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="../index.html">Mochi <span>&amp;</span> Snow</a>
+  <nav>
+    <a class="lk" href="../index.html">Home</a>
+    <a class="lk" href="index.html">Compare</a>
+    <a class="lk" href="../checker/">Character Checker</a>
+    <a class="lk" href="../role-assets/">Character Assets</a>
+    <a class="btn sm" href="../play.html">Try free</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="crumbs"><a href="../index.html">Home</a> &rsaquo; Compare</div>
+    <span class="kicker">Checked 2026-10-11</span>
+    <h1>Desktop pet apps compared</h1>
+    <p class="sub">Four apps come up over and over when people go looking for a desktop pet, and they
+    are not really competing on quality. They are competing on what you have to do before a character
+    moves. That is the thing this page sorts out.</p>
+  </div>
+
+  <section>
+    <h2>Start from what you already have</h2>
+    <div class="grid2">
+      <div class="card"><h3>You own Live2D models</h3>
+        <p>Live2DViewerEX will load them. It ships without characters and expects you to bring your own.</p>
+        <p><a href="live2dviewerex.html">See the Live2DViewerEX comparison &rarr;</a></p></div>
+      <div class="card"><h3>You want a licensed 3D character</h3>
+        <p>Desktop Mate. The app is free and characters such as Hatsune Miku are sold as DLC at about
+        &yen;76 each.</p>
+        <p><a href="desktop-mate.html">See the Desktop Mate comparison &rarr;</a></p></div>
+      <div class="card"><h3>You want free and open source</h3>
+        <p>Shimeji is free and BSD licensed, configurable through XML — if you will install Java first.</p>
+        <p><a href="shimeji.html">See the Shimeji comparison &rarr;</a></p></div>
+      <div class="card us"><h3>You want two finished characters, paid once</h3>
+        <p>Mochi &amp; Snow. Both bunnies included at $5.99, hand-drawn, and the desktop app
+        makes no network calls.</p>
+        <p><a href="../play.html">Try the bunnies free &rarr;</a></p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The four, at a glance</h2>
+    <div class="tbl-wrap">
+      <table>
+        <tr><th>App</th><th>Upfront cost</th><th>Platform</th><th>Steam app id</th><th>Art</th></tr>
+        <tr><td><a href='desktop-mate.html'><b>Desktop Mate</b></a><br><span class='tiny'>infiniteloop (Japan)</span></td><td>Free (base app)</td><td>Windows, macOS, Linux</td><td>3301060</td><td>3D</td></tr><tr><td><a href='live2dviewerex.html'><b>Live2DViewerEX</b></a><br><span class='tiny'>Pavo Studio</span></td><td>$4.99</td><td>Windows, macOS, Linux, Steam Deck, Android, iOS</td><td>616720</td><td>Live2D (whatever models you load)</td></tr><tr><td><a href='shimeji.html'><b>Shimeji</b></a><br><span class='tiny'>Created 2008 by Yuki Yamada (group-finity), Japan</span></td><td>Free</td><td>Windows, macOS, Linux (varies by fork)</td><td>—</td><td>2D sprite sheets</td></tr>
+        <tr><td><b>Mochi &amp; Snow</b><br><span class="tiny">福源AI工作室 · 2026-10-11</span></td>
+            <td><b>$5.99</b> one time<br><span class="tiny">list $12.90</span></td>
+            <td>Windows 10 / 11 (64-bit)</td><td>Not on Steam yet</td><td>Hand-drawn 2D</td></tr>
+      </table>
+    </div>
+    <p class="note">Steam app ids are listed so you can look each product up yourself instead of
+    trusting our summary. Prices were read on 2026-10-11.</p>
+  </section>
+
+  <section>
+    <h2>Full comparisons</h2>
+    <div class="grid2"><div class='card'><h3>Desktop Mate</h3><p>the one to pick if you want 3D anime characters on your desktop.</p><p><a href='desktop-mate.html'>Full comparison &rarr;</a></p></div><div class='card'><h3>Live2DViewerEX</h3><p>the one to pick if you already own Live2D models and want to manage them.</p><p><a href='live2dviewerex.html'>Full comparison &rarr;</a></p></div><div class='card'><h3>Shimeji</h3><p>the one to pick if you want free, open source, and you will build your own sprite pack.</p><p><a href='shimeji.html'>Full comparison &rarr;</a></p></div></div>
+  </section>
+
+  <div class="cta">
+    <h2>Not sure yet?</h2>
+    <p>Run the bunnies in your browser first. It is the same animation engine the Windows app uses,
+    it takes two minutes, and it asks for nothing.</p>
+    <a class="btn" href="../play.html">Try free in the browser</a>
+    <a class="btn alt" href="../checker/">Or check your own character art</a>
+  </div>
+
+  <section>
+    <h2>Questions</h2>
+    <details><summary>Which desktop pet app should I start with?</summary><p>Start from what you already have. If you own Live2D models, Live2DViewerEX will use them. If you want a licensed 3D anime character, Desktop Mate sells those as DLC. If you want free and open source and will build your own sprite pack, Shimeji is hard to beat. Mochi &amp; Snow is for the case where you want two finished original characters and pay for them once.</p></details><details><summary>Is Mochi &amp; Snow free?</summary><p>The browser demo is free and needs no signup, so you can watch the bunnies move before paying. The Windows app is a one-time $5.99. There is no subscription and no character DLC.</p></details><details><summary>Does Mochi &amp; Snow cost more than the alternatives?</summary><p>Compared with Live2DViewerEX at $4.99 it costs about a dollar more, and unlike that app it includes the characters. Compared with Desktop Mate the app is not free, but you are not buying characters at about &yen;76 each afterwards. Compared with Shimeji it costs money where Shimeji is free — Shimeji asks for a Java install and XML work instead.</p></details><details><summary>Can I run Mochi &amp; Snow on macOS or Linux?</summary><p>Mochi &amp; Snow is a Windows 10 and 11 app. Desktop Mate and Live2DViewerEX ship macOS and Linux builds, and Shimeji has macOS and Linux forks. If you are not on Windows, one of those is the better answer.</p></details><details><summary>Do these apps need an internet connection?</summary><p>The Mochi &amp; Snow desktop app makes no network calls at all. Desktop Mate and Live2DViewerEX both use a store and a workshop for content, so they need a connection to fetch new characters or models.</p></details><details><summary>Are there other desktop pet apps worth knowing about?</summary><p>Yes, there is a long tail of smaller projects, and Chinese-language roundups of desktop pet software list several dozen. We deliberately put only the four most commonly compared apps here, because a page listing forty tools tells you nothing about which one fits your machine.</p></details><details><summary>Why does this page exist?</summary><p>Because most best-desktop-pet pages do not tell you what you have to install first, or what an extra character costs. Each app below is described by what it asks of you, not by how nice it sounds.</p></details>
+  </section>
+</main>
+<footer><div class="wrap">
+  <p><b>Mochi &amp; Snow</b> — two original lop-eared bunnies for Windows. One-time purchase, no subscription, no character DLC.</p>
+  <p><a href="../index.html">Home</a> · <a href="index.html">Compare desktop pets</a> ·
+     <a href="../use-cases/index.html">Use cases</a> ·
+     <a href="../checker/">Character consistency checker</a> · <a href="../role-assets/">Character assets</a> ·
+     <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a> · <a href="../refund.html">Refund</a></p>
+  <p class="tiny">Competitor details on this page were read from public store pages on 2026-10-11.
+     Prices and features change — confirm on the vendor's own store page before buying.
+     We are not affiliated with any product named here.</p>
+</div></footer>
+</body></html>

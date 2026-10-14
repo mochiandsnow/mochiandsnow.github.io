@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A desktop companion that never interrupts a build — Mochi &amp; Snow</title>
+<meta name="description" content="You spend the whole day in a window that is already full of things demanding attention. The point of a bunny on the desktop is that it asks for none.">
+<link rel="canonical" href="https://mochiandsnow.com/use-cases/developers.html">
+<link rel="alternate" hreflang="zh-CN" href="https://mochiandsnow.com/zh.html">
+<link rel="icon" href="../assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="../assets/icon-192.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mochi &amp; Snow">
+<meta property="og:title" content="A desktop companion that never interrupts a build — Mochi &amp; Snow">
+<meta property="og:description" content="You spend the whole day in a window that is already full of things demanding attention. The point of a bunny on the desktop is that it asks for none.">
+<meta property="og:url" content="https://mochiandsnow.com/use-cases/developers.html">
+<meta property="og:image" content="https://mochiandsnow.com/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#FFFBF6; --card:#FFFFFF; --ink:#3B2F27; --muted:#7A6A5D;
+    --line:#EFE3D6; --caramel:#C89A6B; --caramel-d:#A87B4E;
+    --pink:#E8A0B4; --pink-d:#D4809A; --ok:#3E8E6B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  a{color:var(--caramel-d)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  header{padding:18px 0;border-bottom:1px solid var(--line);
+    background:rgba(255,251,246,.92);backdrop-filter:blur(10px)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .logo{font-weight:800;font-size:19px;letter-spacing:-.2px;color:var(--ink);text-decoration:none}
+  .logo span{color:var(--pink-d)}
+  .nav a.lk{margin-left:22px;color:var(--muted);text-decoration:none;font-size:15px}
+  .nav a.lk:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--caramel-d);color:#fff;text-decoration:none;
+    padding:13px 26px;border-radius:999px;font-weight:700;border:0;cursor:pointer;
+    box-shadow:0 8px 20px rgba(168,123,78,.22)}
+  .btn.alt{background:#fff;color:var(--caramel-d);border:1.5px solid var(--line);box-shadow:none}
+  .btn.sm{padding:9px 18px;font-size:14px}
+  .hero{padding:48px 0 8px}
+  .kicker{display:inline-block;background:#FDF0E4;color:var(--caramel-d);font-weight:700;
+    font-size:13px;letter-spacing:.4px;padding:6px 14px;border-radius:999px;margin-bottom:16px}
+  h1{font-size:clamp(28px,4.2vw,44px);line-height:1.18;letter-spacing:-.8px;margin:0 0 14px}
+  h2{font-size:clamp(22px,2.8vw,30px);letter-spacing:-.5px;margin:0 0 12px}
+  h3{margin:26px 0 8px;font-size:18px}
+  .sub{font-size:clamp(16px,1.9vw,18px);color:var(--muted);max-width:760px;margin:0 0 22px}
+  .lead{color:var(--muted);margin:0 0 26px;max-width:780px}
+  section{padding:44px 0}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:15px}
+  th,td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#FDF6EE;font-size:13.5px;letter-spacing:.3px;text-transform:uppercase;color:var(--muted)}
+  tr:last-child td{border-bottom:0}
+  td.us{background:#FCFAF6}
+  .tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  ul.plain{list-style:none;padding:0;margin:0}
+  ul.plain li{padding:7px 0 7px 28px;position:relative;color:var(--muted)}
+  ul.plain li:before{content:"\2022";position:absolute;left:8px;color:var(--caramel);font-weight:800}
+  ul.no li:before{content:"\2715";color:#C0705F}
+  ul.yes li:before{content:"\2713";color:var(--ok)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}.nav a.lk{display:none}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .card.us{border:2px solid var(--caramel)}
+  .card h3{margin-top:0}
+  .card p{color:var(--muted)}
+  .note{font-size:13.5px;color:var(--muted);border-left:3px solid var(--line);
+    padding:2px 0 2px 14px;margin:22px 0}
+  .cta{background:#FDF6EE;border:1px solid var(--line);border-radius:20px;padding:30px;
+    text-align:center;margin:10px 0}
+  .cta h2{margin-bottom:8px}
+  .cta p{color:var(--muted);margin:0 0 20px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 18px;margin-bottom:10px}
+  summary{font-weight:700;cursor:pointer}
+  details p{color:var(--muted);margin:10px 0 0}
+  footer{padding:36px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px;margin-top:30px}
+  .crumbs{font-size:14px;color:var(--muted);margin-bottom:18px}
+  .crumbs a{color:var(--muted)}
+  .tiny{font-size:13.5px;color:var(--muted)}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mochi & Snow","applicationCategory":"UtilitiesApplication","operatingSystem":"Windows 10, Windows 11","url":"https://mochiandsnow.com/index.html","description":"Two hand-drawn lop-eared bunnies for the Windows desktop. 21 actions, 25 comic effects, true offline, one-time purchase.","offers":{"@type":"Offer","price":"5.99","priceCurrency":"USD"},"featureList":["21 animated actions","25 comic effects","4 facial expressions per bunny","drag and drop","true offline"]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","url":"https://mochiandsnow.com/use-cases/developers.html","mainEntity":[{"@type":"Question","name":"Will a desktop pet slow my machine down while I compile?","acceptedAnswer":{"@type":"Answer","text":"It is hand-drawn 2D rather than 3D or Live2D, and it does not need a model pipeline, so it stays small. We are not going to quote a frame rate we have not measured on your hardware — if it is a problem on your machine, the 7-day refund exists for that."}},{"@type":"Question","name":"Can I hide them while screen sharing?","acceptedAnswer":{"@type":"Answer","text":"Yes. The app can be quit and restarted with one click, and because it makes no network calls there is no account or session to lose when you do."}},{"@type":"Question","name":"Do they capture my clicks?","acceptedAnswer":{"@type":"Answer","text":"The bunnies sit at the bottom of the window stack rather than floating in front of your work, and you drag them deliberately with the mouse rather than catching them by accident."}},{"@type":"Question","name":"What is Mochi & Snow?","acceptedAnswer":{"@type":"Answer","text":"A Windows desktop pet: two hand-drawn lop-eared bunnies called Mochi and Snow that live on your desktop with 21 actions and 25 comic effects. One-time purchase, no subscription."}},{"@type":"Question","name":"How much is it and what is included?","acceptedAnswer":{"@type":"Answer","text":"USD 5.99 once. Both bunnies, all 21 actions and 25 comic effects, six phone wallpapers, free updates, and a 7-day refund. There is no character DLC to buy later."}},{"@type":"Question","name":"Can I try it before paying?","acceptedAnswer":{"@type":"Answer","text":"Yes. The browser demo is free, needs no signup, and runs the same animation engine as the Windows app."}}]}</script>
+</head>
+<body>
+<header><div class="wrap nav">
+  <a class="logo" href="../index.html">Mochi <span>&amp;</span> Snow</a>
+  <nav>
+    <a class="lk" href="../index.html">Home</a>
+    <a class="lk" href="index.html">Compare</a>
+    <a class="lk" href="../checker/">Character Checker</a>
+    <a class="lk" href="../role-assets/">Character Assets</a>
+    <a class="btn sm" href="../play.html">Try free</a>
+  </nav>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div class="crumbs"><a href="../index.html">Home</a> &rsaquo; <a href="index.html">Use cases</a>
+      &rsaquo; For developers</div>
+    <span class="kicker">Checked 2026-10-11</span>
+    <h1>A desktop companion that never interrupts a build</h1>
+    <p class="sub">You spend the whole day in a window that is already full of things demanding attention. The point of a bunny on the desktop is that it asks for none.</p>
+    <p><a class="btn" href="../play.html">Try the bunnies free</a>
+       <a class="btn alt" href="../index.html">See pricing &mdash; $5.99</a></p>
+  </div>
+
+  <section>
+    <p class="lead">This page is about what it is actually like to keep Mochi &amp; Snow running through a working day, not about a feature list.</p>
+    <h2>What it does during your working hours</h2>
+    <div class="grid2"><div class='card'><h3>They sit under everything, not over it</h3><p>Mochi and Snow stay transparent, borderless and at the bottom of the window stack, so they are never in front of the code you are reading. You see them when you look down, not when you are trying to click something.</p></div><div class='card'><h3>Nothing is thrown at your windows</h3><p>The classic open source desktop pets will pick up your windows and throw them across the screen. That behaviour is off here by design. A pet that can interrupt a drag operation is a pet you turn off within a day.</p></div><div class='card'><h3>No network calls, no telemetry, no account</h3><p>The desktop app makes no network calls at all. On a locked-down work machine that is the difference between a personal touch and a security conversation.</p></div><div class='card'><h3>Long idle periods look right</h3><p>Leave them alone and they settle into sleeping and blinking rather than looping a conspicuous animation. Four expressions per bunny are blended rather than cut, so a blink reads as a blink.</p></div></div>
+  </section>
+
+  <section>
+    <h2>The honest drawbacks</h2>
+    <div class="card"><ul class="plain no"><li>They are decorative. They will not track your tasks, show a timer or read your CI status.</li><li>Two bunnies is the whole cast. If you want a specific licensed character, this is the wrong app — Desktop Mate sells those as DLC.</li><li>It is a Windows app. There is no macOS or Linux build.</li></ul></div>
+    <p class="note">If more than one of those is disqualifying, this is the wrong app for you, and
+    the comparison page will point you at the right one.</p>
+    <p><a href="../alternatives/index.html">Compare desktop pet apps &rarr;</a></p>
+  </section>
+
+  <div class="cta">
+    <h2>Two minutes, no signup</h2>
+    <p>Run the same animation engine in your browser before you decide. Nothing to install,
+    nothing to enter, no email.</p>
+    <a class="btn" href="../play.html">Open the free demo</a>
+    <a class="btn alt" href="../checker/">Or check your own character art</a>
+  </div>
+
+  <section>
+    <h2>Questions</h2>
+    <details><summary>Will a desktop pet slow my machine down while I compile?</summary><p>It is hand-drawn 2D rather than 3D or Live2D, and it does not need a model pipeline, so it stays small. We are not going to quote a frame rate we have not measured on your hardware — if it is a problem on your machine, the 7-day refund exists for that.</p></details><details><summary>Can I hide them while screen sharing?</summary><p>Yes. The app can be quit and restarted with one click, and because it makes no network calls there is no account or session to lose when you do.</p></details><details><summary>Do they capture my clicks?</summary><p>The bunnies sit at the bottom of the window stack rather than floating in front of your work, and you drag them deliberately with the mouse rather than catching them by accident.</p></details><details><summary>What is Mochi &amp; Snow?</summary><p>A Windows desktop pet: two hand-drawn lop-eared bunnies called Mochi and Snow that live on your desktop with 21 actions and 25 comic effects. One-time purchase, no subscription.</p></details><details><summary>How much is it and what is included?</summary><p>USD 5.99 once. Both bunnies, all 21 actions and 25 comic effects, six phone wallpapers, free updates, and a 7-day refund. There is no character DLC to buy later.</p></details><details><summary>Can I try it before paying?</summary><p>Yes. The browser demo is free, needs no signup, and runs the same animation engine as the Windows app.</p></details>
+    <h3>Other use cases</h3>
+    <ul class="plain"><li><a href='streamers.html'>For streamers</a></li><li><a href='students.html'>For students and study desks</a></li>
+      <li><a href="../alternatives/index.html">Compare with Desktop Mate, Live2DViewerEX and Shimeji</a></li>
+    </ul>
+  </section>
+</main>
+<footer><div class="wrap">
+  <p><b>Mochi &amp; Snow</b> — two original lop-eared bunnies for Windows. One-time purchase, no subscription, no character DLC.</p>
+  <p><a href="../index.html">Home</a> · <a href="index.html">Compare desktop pets</a> ·
+     <a href="../use-cases/index.html">Use cases</a> ·
+     <a href="../checker/">Character consistency checker</a> · <a href="../role-assets/">Character assets</a> ·
+     <a href="../privacy.html">Privacy</a> · <a href="../terms.html">Terms</a> · <a href="../refund.html">Refund</a></p>
+  <p class="tiny">Competitor details on this page were read from public store pages on 2026-10-11.
+     Prices and features change — confirm on the vendor's own store page before buying.
+     We are not affiliated with any product named here.</p>
+</div></footer>
+</body></html>
