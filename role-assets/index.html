@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>糯团 &amp; 雪团 · 角色资产库 | 可直接商用的原创双角色资产</title>
+<meta name="description" content="原创双角色资产包：1024px 透明立绘、36 表情件、动作部件与序列帧、壁纸与演示视频，共 97 个交付文件。可商用授权，支持定制代工。">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--ink:#261e18;--mut:#7d726a;--acc:#c48a5c;--acc2:#e8a8ba;--soft:#faf6f1;--line:#ece4da}
+body{font:16px/1.75 "Microsoft YaHei","PingFang SC",system-ui,sans-serif;color:var(--ink);background:#fff}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.hero{background:#2b2118;color:#fff9f2;padding:74px 0 62px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.25;letter-spacing:.5px}
+.hero p{margin-top:16px;color:#cdbba7;max-width:660px}
+.tag{display:inline-block;font-size:13px;letter-spacing:2px;color:#e0c9ae;border:1px solid #4d3f31;border-radius:999px;padding:5px 14px;margin-bottom:22px}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:-34px;position:relative;z-index:2;border-radius:14px;overflow:hidden}
+.nums div{background:#fff;padding:22px 16px;text-align:center}
+.nums b{display:block;font-size:30px;color:var(--acc);letter-spacing:-1px}
+.nums span{font-size:13px;color:var(--mut)}
+section{padding:58px 0;border-bottom:1px solid var(--line)}
+h2{font-size:23px;margin-bottom:8px}
+h2 i{font-style:normal;color:var(--acc);margin-right:10px}
+.sub{color:var(--mut);font-size:14px;margin-bottom:26px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.duo figure{background:var(--soft);border-radius:18px;padding:20px;text-align:center}
+.duo img{max-width:100%;height:330px;object-fit:contain}
+.duo figcaption{margin-top:12px;font-size:14px;color:var(--mut)}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid4 figure{background:var(--soft);border-radius:12px;padding:10px;text-align:center}
+.grid4 img{width:100%;height:150px;object-fit:contain}
+.grid4 figcaption{font-size:12px;color:var(--mut);margin-top:6px;word-break:break-all}
+.emo{display:grid;grid-template-columns:repeat(9,1fr);gap:8px}
+.emo img{width:100%;background:var(--soft);border-radius:10px;padding:6px}
+.wp{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.wp img{width:100%;border-radius:12px;border:1px solid var(--line)}
+table{width:100%;border-collapse:collapse}
+td{padding:15px 14px;border-bottom:1px solid var(--line)}
+td.k{font-weight:700}
+td.m{color:var(--mut);font-size:14px}
+td.v{text-align:right;color:var(--acc);font-weight:700;font-size:19px;white-space:nowrap}
+td.v span{font-size:13px;color:var(--mut);font-weight:400}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tier{border:1px solid var(--line);border-radius:16px;padding:26px 20px;background:#fff}
+.tier.hot{border-color:var(--acc);background:#fffaf4;box-shadow:0 6px 26px rgba(196,138,92,.13)}
+.tier .nm{font-size:15px;color:var(--mut)}
+.tier .pr{font-size:38px;font-weight:700;color:var(--acc);letter-spacing:-1px;margin:6px 0 10px}
+.tier ul{list-style:none;font-size:14px;color:#5d534b}
+.tier li{padding:5px 0 5px 16px;position:relative}
+.tier li:before{content:"";position:absolute;left:0;top:13px;width:6px;height:6px;border-radius:50%;background:var(--acc2)}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.flow div{background:var(--soft);border-radius:14px;padding:20px 16px;font-size:14px;color:#5d534b;position:relative}
+.flow div:before{counter-increment:s;content:counter(s);position:absolute;top:-11px;left:14px;background:var(--acc);color:#fff;width:24px;height:24px;border-radius:50%;font-size:13px;text-align:center;line-height:24px}
+.flow b{display:block;color:var(--ink);margin-bottom:6px}
+.sheetwrap{text-align:center}
+.sheetwrap img{max-width:100%;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.cta{background:#2b2118;color:#fff9f2;border-radius:20px;padding:44px 30px;text-align:center;margin:34px 0 0}
+.cta h3{font-size:24px;margin-bottom:10px}
+.cta p{color:#cdbba7;font-size:15px;max-width:620px;margin:0 auto 22px}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 26px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:700}
+.b1{background:var(--acc);color:#fff}
+.b2{border:1px solid #57483a;color:#e7d7c4}
+.note{font-size:13px;color:#8d7f70;margin-top:20px}
+footer{padding:30px 0 46px;color:var(--mut);font-size:13px;text-align:center}
+@media(max-width:760px){
+ .nums{grid-template-columns:repeat(2,1fr)}
+ .duo,.tiers{grid-template-columns:1fr}
+ .grid4{grid-template-columns:repeat(2,1fr)}
+ .emo{grid-template-columns:repeat(4,1fr)}
+ .wp{grid-template-columns:repeat(2,1fr)}
+ .flow{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <span class="tag">MOCHI &amp; SNOW · 原创角色资产</span>
+  <h1>糯团 &amp; 雪团<br>可直接商用的双角色资产库</h1>
+  <p>1024px 透明立绘、36 张情绪表情、可挂骨骼的动作部件、逐帧动作序列、成品壁纸与横竖屏演示视频。
+     一套文件，短剧 / 漫剧转绘 / 短视频 / 表情包 / 直播贴图直接可用。</p>
+</div></header>
+
+<div class="wrap"><div class="nums">
+  <div><b>97</b><span>交付文件</span></div>
+  <div><b>2</b><span>原创角色</span></div>
+  <div><b>36</b><span>表情件</span></div>
+  <div><b>36</b><span>动作帧</span></div>
+</div></div>
+
+<section><div class="wrap">
+  <h2><i>01</i>主立绘</h2>
+  <p class="sub">透明 PNG · 1024px · 现成可抠 · 无第三方 IP 元素</p>
+  <div class="duo">
+    <figure><img src="img/nuo.png" alt="糯团 透明立绘"><figcaption>糯团 NuoTuan · 奶茶棕 · 主角色</figcaption></figure>
+    <figure><img src="img/xue.png" alt="雪团 透明立绘"><figcaption>雪团 Xuetuan · 雪白 · 搭档角色</figcaption></figure>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>02</i>全套素材</h2>
+  <p class="sub">立绘 / 母版 / 三视图 —— 全部实际交付物，非效果图</p>
+  <div class="grid4"><figure><img src="img/g_糯团_三视图.png" alt="糯团_三视图" loading="lazy"><figcaption>糯团_三视图</figcaption></figure><figure><img src="img/g_糯团_母版_1024.png" alt="糯团_母版_1024" loading="lazy"><figcaption>糯团_母版_1024</figcaption></figure><figure><img src="img/g_糯团_立绘_1024.png" alt="糯团_立绘_1024" loading="lazy"><figcaption>糯团_立绘_1024</figcaption></figure><figure><img src="img/g_糯团_立绘_毛绒_1024.png" alt="糯团_立绘_毛绒_1024" loading="lazy"><figcaption>糯团_立绘_毛绒_1024</figcaption></figure><figure><img src="img/g_雪团_三视图.png" alt="雪团_三视图" loading="lazy"><figcaption>雪团_三视图</figcaption></figure><figure><img src="img/g_雪团_母版_1024.png" alt="雪团_母版_1024" loading="lazy"><figcaption>雪团_母版_1024</figcaption></figure><figure><img src="img/g_雪团_立绘_1024.png" alt="雪团_立绘_1024" loading="lazy"><figcaption>雪团_立绘_1024</figcaption></figure><figure><img src="img/g_雪团_立绘_毛绒_1024.png" alt="雪团_立绘_毛绒_1024" loading="lazy"><figcaption>雪团_立绘_毛绒_1024</figcaption></figure></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>03</i>情绪表情件</h2>
+  <p class="sub">240px 透明 PNG · 可直接用于口型与情绪切换</p>
+  <div class="emo"><img src="img/e_D_J01_贴贴.png" alt="表情" loading="lazy"><img src="img/e_D_J02_抱抱.png" alt="表情" loading="lazy"><img src="img/e_D_J03_摸摸头.png" alt="表情" loading="lazy"><img src="img/e_D_J04_一起睡.png" alt="表情" loading="lazy"><img src="img/e_D_J05_送你花.png" alt="表情" loading="lazy"><img src="img/e_D_J06_一起吃.png" alt="表情" loading="lazy"><img src="img/e_D_J07_闹别扭.png" alt="表情" loading="lazy"><img src="img/e_D_J08_对不起.png" alt="表情" loading="lazy"><img src="img/e_D_J09_一起比心.png" alt="表情" loading="lazy"><img src="img/e_D_J10_跷跷板.png" alt="表情" loading="lazy"><img src="img/e_D_J11_举个牌.png" alt="表情" loading="lazy"><img src="img/e_D_J12_陪我哭.png" alt="表情" loading="lazy"><img src="img/e_D_J13_笑到打滚.png" alt="表情" loading="lazy"><img src="img/e_D_J14_拉手手.png" alt="表情" loading="lazy"><img src="img/e_D_J15_亲一个.png" alt="表情" loading="lazy"><img src="img/e_D_J16_抢东西.png" alt="表情" loading="lazy"><img src="img/e_D_J17_一起打伞.png" alt="表情" loading="lazy"><img src="img/e_D_J18_送你礼物.png" alt="表情" loading="lazy"><img src="img/e_N01_大笑.png" alt="表情" loading="lazy"><img src="img/e_N02_委屈.png" alt="表情" loading="lazy"><img src="img/e_N03_生气.png" alt="表情" loading="lazy"><img src="img/e_N04_惊呆.png" alt="表情" loading="lazy"><img src="img/e_N05_发呆.png" alt="表情" loading="lazy"><img src="img/e_N06_亲亲.png" alt="表情" loading="lazy"><img src="img/e_N07_疑惑.png" alt="表情" loading="lazy"><img src="img/e_N08_加油.png" alt="表情" loading="lazy"><img src="img/e_N09_晕了.png" alt="表情" loading="lazy"><img src="img/e_X01_偷笑.png" alt="表情" loading="lazy"><img src="img/e_X02_哭哭.png" alt="表情" loading="lazy"><img src="img/e_X03_气鼓鼓.png" alt="表情" loading="lazy"><img src="img/e_X04_吃惊.png" alt="表情" loading="lazy"><img src="img/e_X05_困困.png" alt="表情" loading="lazy"><img src="img/e_X06_比心.png" alt="表情" loading="lazy"><img src="img/e_X07_挠头.png" alt="表情" loading="lazy"><img src="img/e_X08_冲鸭.png" alt="表情" loading="lazy"><img src="img/e_X09_晕倒.png" alt="表情" loading="lazy"></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>04</i>交付清单与规格</h2>
+  <p class="sub">统计时间 2026-10-09 · 每次更新自动重算</p>
+  <table><tr><td class="k">主立绘 / 母版 / 三视图</td><td class="m">PNG 透明 + RGB · 1024px</td><td class="v">8 <span>个</span></td></tr><tr><td class="k">动作部件（rig 用）</td><td class="m">睁眼 / 半睁 / 闭眼 / 笑 / 羞</td><td class="v">10 <span>个</span></td></tr><tr><td class="k">表情件</td><td class="m">PNG 透明 · 240px</td><td class="v">36 <span>个</span></td></tr><tr><td class="k">动作序列帧</td><td class="m">PNG 透明 · 逐帧</td><td class="v">36 <span>个</span></td></tr><tr><td class="k">手机壁纸</td><td class="m">PNG · 成品尺寸</td><td class="v">5 <span>个</span></td></tr><tr><td class="k">演示视频</td><td class="m">MP4 · 横屏 + 竖屏</td><td class="v">2 <span>个</span></td></tr></table>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>05</i>成品效果</h2>
+  <p class="sub">壁纸成品 + 完整规格书</p>
+  <div class="wp"><img src="img/w__预览-4款.png" alt="壁纸" loading="lazy"><img src="img/w_壁纸1-糯团·蜜桃奶茶.png" alt="壁纸" loading="lazy"><img src="img/w_壁纸2-雪团·云朵薄荷.png" alt="壁纸" loading="lazy"><img src="img/w_壁纸3-双兔贴贴·暖阳.png" alt="壁纸" loading="lazy"></div>
+  <div class="sheetwrap" style="margin-top:26px">
+    <img src="img/sheet.png" alt="角色资产包规格书">
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>06</i>动态漫剧成片</h2>
+  <p class="sub">不是只卖素材：用这一套资产，我们自己就能做成片 —— 分镜 → 逐帧骨骼动画 → 多角色配音 → 字幕 → BGM，全本地产出</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;align-items:start">
+    <video controls playsinline preload="metadata" poster="manju-ep1-cover.png"
+           style="width:100%;max-height:66vh;border-radius:16px;border:1px solid var(--line);background:#000">
+      <source src="manju-ep1.mp4" type="video/mp4">
+      你的浏览器不支持视频播放，可<a href="manju-ep1.mp4">直接下载观看</a>。
+    </video>
+    <div>
+      <p style="color:#5d534b"><b>《糯团 &amp; 雪团》第 1 集 · 今天也要一起睡</b><br>
+      43 秒 ／ 1080×1920 竖屏 ／ 24fps</p>
+      <ul style="list-style:none;font-size:14px;color:#5d534b;margin-top:8px">
+        <li style="padding:4px 0">· 8 句多角色配音，3 种音色（旁白／雪团／糯团）</li>
+        <li style="padding:4px 0">· 字幕按台词时间轴逐句烧录（不是等分）</li>
+        <li style="padding:4px 0">· BGM 自研合成，无版权风险</li>
+        <li style="padding:4px 0">· 画面用的就是本页同一套角色资产，逐帧骨骼动画</li>
+      </ul>
+      <p style="margin-top:14px;font-size:14px;color:var(--mut)">
+        这一集想证明的只有一件事：<b>素材 → 成片</b>这条路我们走得通，
+        而且单集边际成本接近 0（自有产线，不靠租模型）。按集代工见下方。
+      </p>
+    </div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>07</i>授权与价格</h2>
+  <p class="sub">按授权定价，不按工时 · 终身可用 · 提供书面授权凭证</p>
+  <div class="tiers">
+    <div class="tier"><div class="nm">个人学习</div><div class="pr">¥199</div>
+      <ul><li>非商用、单机使用</li><li>不可再分发</li><li>含全部 97 个文件</li></ul></div>
+    <div class="tier hot"><div class="nm">商用 · 单项目</div><div class="pr">¥980</div>
+      <ul><li>一个项目内使用</li><li>不限播出量</li><li>可调色 / 裁切 / 加特效</li><li>含商用授权书</li></ul></div>
+    <div class="tier"><div class="nm">买断 · 独占</div><div class="pr">¥4,800</div>
+      <ul><li>独占使用权</li><li>可修改、可衍生</li><li>下架该资产包</li><li>面签授权协议</li></ul></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><i>08</i>还接受定制代工</h2>
+  <p class="sub">不止卖现成的 —— 你给设定或参考图，我出整套可交付资产</p>
+  <div class="flow">
+    <div><b>发需求</b>设定描述 / 参考图 / 用途，1 句话也行</div>
+    <div><b>出 3 版草稿</b>24 小时内，你挑 1 版定方向</div>
+    <div><b>出成套资产</b>立绘 + 表情 + 动作部件，可加壁纸与视频</div>
+    <div><b>交付源文件</b>透明 PNG 全套 + 授权书，免费改 2 次</div>
+  </div>
+</div></section>
+
+<div class="wrap"><div style="margin:0 0 26px;padding:22px 24px;border-radius:16px;background:#F5F0E8;border:1px solid #E3D9CA;display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+  <div style="flex:1;min-width:260px">
+    <h3 style="margin:0 0 6px;font-size:18px">先免费测：你要的角色是不是已经在漂移？</h3>
+    <p style="margin:0;font-size:14px;line-height:1.75;color:#7A6C60">
+      上传同一个角色的多张图，自动算出 CIE Lab ΔE 偏差，并直接点名哪一张跑偏。
+      不用注册，图片全程留在你的浏览器里，不上传服务器。</p>
+  </div>
+  <a href="../checker/" style="display:inline-block;padding:12px 22px;border-radius:10px;background:#3A2E26;color:#F7F4EF;text-decoration:none;font-weight:600;font-size:14px;white-space:nowrap">打开检测器 →</a>
+</div></div>
+
+<div class="wrap"><div class="cta" id="howto">
+  <h3>看中了，或者想做定制？</h3>
+  <p>直接说用途和预算，我先给你看匹配的样张再谈钱。批量（3 套以上）与长期供应另议。</p>
+  <div class="btns">
+    <a class="btn b1" href="mailto:fuxs9056@agent.qq.com?subject=Role%20Asset%20Pack%20enquiry">邮件咨询与订购</a>
+    <a class="btn b2" href="../checker/">先免费测一致性</a>
+  </div>
+  <p class="note"><strong>本页不跳转任何第三方平台。</strong>订购与付款均通过本工作室自有渠道完成，不经过任何第三方结账页。<br>
+     承接方式：<br>
+     ① 发邮件至 fuxs9056@agent.qq.com，写明用途、预算、交付日<br>
+     ② 我回复匹配样张、授权层级与交付排期<br>
+     ③ 确认后签署授权书，先给源文件后结算<br>
+     授权层级、交付方式与退款规则见 <a href="../terms.html">服务条款</a>。<br><br>
+     本页持续更新：资产目录只增不减，每新增一套会自动出现在这里。<br>
+     下一批计划：冬日限定装 · 节日装 · 双人互动扩展帧。</p>
+</div></div>
+
+<footer>
+  <div class="wrap">
+    福源AI工作室 · Mochi &amp; Snow<br>
+    本页所有图像均为实际交付文件，未经美化处理 · 更新于 2026-10-09
+  </div>
+</footer>
+</body>
+</html>
