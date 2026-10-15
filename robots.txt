@@ -4,4 +4,4 @@ Allow: /
 Disallow: /dl/
 
 # ★站点地图：指向正式域名，正式站上线后自动生效
-Sitemap: https://mochiandsnow.com/sitemap.xml
+Sitemap: https://mochiandsnow.github.io/sitemap.xml
